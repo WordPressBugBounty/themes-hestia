@@ -1,3 +1,12 @@
+##### [Version 3.2.2](https://github.com/Codeinwp/hestia-pro/compare/v3.2.1...v3.2.2) (2024-10-30)
+
+Enhancements
+- Added more translatable strings for improved localization.
+Fixes
+- Aligned shopping cart widget in the top bar.
+- Fixed support link for premium users.
+- Updated About page links and text.
+
 ##### [Version 3.2.1](https://github.com/Codeinwp/hestia-pro/compare/v3.2.0...v3.2.1) (2024-10-10)
 
 - Fix welcome notice CSS layout

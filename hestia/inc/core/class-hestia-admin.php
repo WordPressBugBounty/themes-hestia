@@ -241,7 +241,7 @@ class Hestia_Admin {
 		$free_pro = array(
 			'free_theme_name'     => 'Hestia',
 			'pro_theme_name'      => 'Hestia Pro',
-			'pro_theme_link'      => apply_filters( 'hestia_upgrade_link_from_child_theme_filter', tsdk_utmify( 'https://themeisle.com/themes/hestia-pro/upgrade/', 'freevspro', 'abouthestia' ) ),
+			'pro_theme_link'      => apply_filters( 'hestia_upgrade_link_from_child_theme_filter', tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/hestia-pro/upgrade/', 'freevspro', 'abouthestia' ), 'query' ) ),
 			/* translators: s - theme name */
 			'get_pro_theme_label' => sprintf( __( 'Get %s now!', 'hestia' ), 'Hestia Pro' ),
 			'banner_link'         => 'http://docs.themeisle.com/article/647-what-is-the-difference-between-hestia-and-hestia-pro',
@@ -758,7 +758,7 @@ class Hestia_Admin {
 			'is_enabled' => ! defined( 'HESTIA_PRO_FLAG' ),
 			'pro_name'   => 'Hestia Pro',
 			'logo'       => get_template_directory_uri() . '/assets/img/logo.svg',
-			'cta_link'   => tsdk_utmify( 'https://themeisle.com/themes/hestia/upgrade/?discount=LOYALUSER583&dvalue=60#pricing', 'hestia-welcome', 'notice' ),
+			'cta_link'   => tsdk_translate_link( tsdk_utmify( 'https://themeisle.com/themes/hestia/upgrade/?discount=LOYALUSER583&dvalue=60#pricing', 'hestia-welcome', 'notice' ), 'query' ),
 		);
 	}
 }
