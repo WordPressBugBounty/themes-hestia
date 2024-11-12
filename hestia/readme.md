@@ -18,6 +18,14 @@ Hestia is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 3.2.3](https://github.com/Codeinwp/hestia-pro/compare/v3.2.2...v3.2.3) (2024-11-11)
+
+- Fixed the blog layout infinite scroll issue
+- Updated dependencies
+
+
+
+
 ##### [Version 3.2.2](https://github.com/Codeinwp/hestia-pro/compare/v3.2.1...v3.2.2) (2024-10-30)
 
 Enhancements

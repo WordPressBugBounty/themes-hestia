@@ -6,9 +6,10 @@
  * @since   Hestia 1.0
  */
 
-define( 'HESTIA_VERSION', '3.2.2' );
+define( 'HESTIA_VERSION', '3.2.3' );
 define( 'HESTIA_VENDOR_VERSION', '1.0.2' );
 define( 'HESTIA_PHP_INCLUDE', trailingslashit( get_template_directory() ) . 'inc/' );
+define( 'HESTIA_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 define( 'HESTIA_CORE_DIR', HESTIA_PHP_INCLUDE . 'core/' );
 
 if ( ! defined( 'HESTIA_DEBUG' ) ) {

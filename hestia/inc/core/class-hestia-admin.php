@@ -669,7 +669,7 @@ class Hestia_Admin {
 	 * @return array
 	 * @see survey.js
 	 */
-	public function get_survery_metadata() {
+	public function get_survey_metadata() {
 
 		$user_id       = 'hestia_';
 		$license_saved = get_option( 'hestia_pro_license_data', array() );
@@ -719,11 +719,17 @@ class Hestia_Admin {
 	 */
 	public function register_survey() {
 
+		$survey_data = $this->get_survey_metadata();
+
+		if ( 1 >= $survey_data['attributes']['plan'] ) {
+			do_action( 'themeisle_sdk_load_banner', 'hestia' );
+		}
+
 		$survey_handler = apply_filters( 'themeisle_sdk_dependency_script_handler', 'survey' );
 		if ( ! empty( $survey_handler ) ) {
 			do_action( 'themeisle_sdk_dependency_enqueue_script', 'survey' );
 			wp_enqueue_script( 'hestia_survey', get_template_directory_uri() . '/assets/js/survey.js', array( $survey_handler ), HESTIA_VENDOR_VERSION, true );
-			wp_localize_script( 'hestia_survey', 'hestiaSurveyData', $this->get_survery_metadata() );
+			wp_localize_script( 'hestia_survey', 'hestiaSurveyData', $survey_data );
 		}
 	}
 
