@@ -1,3 +1,8 @@
+##### [Version 3.2.4](https://github.com/Codeinwp/hestia-pro/compare/v3.2.3...v3.2.4) (2024-11-18)
+
+- Fixed the Big Title section compatibility issue with WordPress 6.7
+- Fixed the Read More button style
+
 ##### [Version 3.2.3](https://github.com/Codeinwp/hestia-pro/compare/v3.2.2...v3.2.3) (2024-11-11)
 
 - Fixed the blog layout infinite scroll issue

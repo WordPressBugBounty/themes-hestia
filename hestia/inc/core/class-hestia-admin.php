@@ -567,7 +567,7 @@ class Hestia_Admin {
 		$has_onboarding = class_exists( 'Themeisle_Onboarding', false );
 
 		/* translators: %s - theme name */
-		$heading     = str_replace( ' - Version', '', sprintf( __( 'Welcome to %s! - Version ', 'hestia' ), $name ) );
+		$heading     = str_replace( ' - Version', '', sprintf( __( 'Welcome to %s! - Version', 'hestia' ), $name ) . ' ' );
 		$screenshot  = get_template_directory_uri() . '/assets/img/notice.png';
 		$description = __( 'Using the WordPress Customizer you can easily customize every aspect of the theme.', 'hestia' );
 		$button_text = __( 'Go to the Customizer', 'hestia' );
