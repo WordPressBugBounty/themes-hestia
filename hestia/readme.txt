@@ -18,6 +18,13 @@ Hestia is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 3.2.5](https://github.com/Codeinwp/hestia-pro/compare/v3.2.4...v3.2.5) (2024-11-21)
+
+- Fixed compatibility issue with WordPress 6.7 that was throwing warnings on translations
+
+
+
+
 ##### [Version 3.2.4](https://github.com/Codeinwp/hestia-pro/compare/v3.2.3...v3.2.4) (2024-11-18)
 
 - Fixed the Big Title section compatibility issue with WordPress 6.7
