@@ -1,3 +1,9 @@
+##### [Version 3.2.6](https://github.com/Codeinwp/hestia-pro/compare/v3.2.5...v3.2.6) (2024-11-22)
+
+- Fixed issue with the License key field and rollback button not appearing
+- Fixed issue with Icons disappearing from the Featured section
+- Fixed issue with Menu items and Widgets sections missing and mobile menu breaking
+
 ##### [Version 3.2.5](https://github.com/Codeinwp/hestia-pro/compare/v3.2.4...v3.2.5) (2024-11-21)
 
 - Fixed compatibility issue with WordPress 6.7 that was throwing warnings on translations
