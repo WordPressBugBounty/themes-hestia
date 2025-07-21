@@ -1990,3 +1990,201 @@ if ( ! function_exists( 'hestia_get_local_webfont_url' ) ) {
 		return wptt_get_webfont_url( $font_url );
 	}
 }
+
+if ( ! function_exists( 'hestia_process_date_meta' ) ) {
+	/**
+	 * Process date meta for published or updated dates.
+	 *
+	 * @param string $date_data Date meta string.
+	 *
+	 * @return string Processed date meta content.
+	 */
+	function hestia_process_date_meta( $date_data ) {
+		preg_match_all( '/\{([^}]+)\}/', $date_data, $matches );
+
+		if ( empty( $matches[1] ) ) {
+			return $date_data;
+		}
+
+		foreach ( $matches[1] as $match ) {
+			$parts          = explode( ':', $match );
+			$tag            = $parts[0];
+			$current_format = isset( $parts[1] ) ? $parts[1] : '';
+			$is_time_ago    = $current_format === 'time_ago';
+
+			if ( $tag === 'hestia_publish_date' || $tag === 'hestia_updated_date' ) {
+				$date_function = $tag === 'hestia_updated_date'
+					? 'hestia_get_update_time_tag'
+					: 'hestia_get_publish_time_tag';
+				$type          = $tag === 'hestia_updated_date' ? 'update' : 'publish';
+
+				$replacement = '{' . $match . '}';
+
+				if ( ! $is_time_ago && $current_format !== '' ) {
+					$date = gmdate( $current_format, time() );
+
+					// Validate if $current_format is a correct date format
+					if ( $date === false || $date === $current_format ) {
+						$replacement = '{' . $match . '}';
+					} else {
+						$replacement = call_user_func( $date_function, $current_format );
+					}
+				} elseif ( $is_time_ago ) {
+					$replacement = sprintf(
+						// translators: %1$s is post link, %2$s is human-readable time difference.
+						__( '<a href="%1$s">%2$s ago</a>', 'hestia' ),
+						esc_url( get_permalink() ),
+						hestia_get_time_diff( $type === 'update' )
+					);
+				} else {
+					$replacement = call_user_func( $date_function, $current_format );
+				}
+
+				$date_data = preg_replace( '/\{' . preg_quote( $match, '/' ) . '\}/', $replacement, $date_data );
+			}
+		}
+
+		return $date_data;
+	}
+}
+
+if ( ! function_exists( 'hestia_get_time_diff' ) ) {
+	/**
+	 * Get time difference.
+	 *
+	 * @param bool $modified Indicates whether the time tag should represent
+	 *                       the modified time (true) or the published time (false).
+	 * @return string
+	 */
+	function hestia_get_time_diff( $modified = false ) {
+		if ( $modified ) {
+			$created = get_the_modified_time( 'U' );
+		} else {
+			$created = get_the_time( 'U' );
+		}
+
+		$array     = current_datetime();
+		$localtime = $array->getTimestamp() + $array->getOffset();
+		$class     = $modified ? 'updated' : 'entry-date published';
+
+		$time  = '<time class="' . esc_attr( $class ) . '" datetime="' . esc_attr( date_i18n( 'c', $created ) ) . '" content="' . esc_attr( date_i18n( 'Y-m-d', $created ) ) . '">';
+		$time .= esc_html( human_time_diff( $created, $localtime ) );
+		$time .= '</time>';
+
+		return $time;
+	}
+}
+
+if ( ! function_exists( 'hestia_get_current_time_tag' ) ) {
+	/**
+	 * Get post published date.
+	 *
+	 * @param string $option date format.
+	 * @return string
+	 */
+	function hestia_get_publish_time_tag( $option ) {
+		$current_option = 'hidden' === $option ? '' : $option;
+
+		$class  = 'entry-date published';
+		$class .= ( 'hidden' === $option ) ? ' hestia-hidden' : '';
+		$time   = '<time class="' . esc_attr( $class ) . '" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date() ) . '">';
+		$time  .= esc_html( get_the_date( $current_option ) );
+		$time  .= '</time>';
+
+		return $time;
+	}
+}
+
+if ( ! function_exists( 'hestia_get_update_time_tag' ) ) {
+	/**
+	 * Get post updated date.
+	 *
+	 * @param string $option date format.
+	 * @return string
+	 */
+	function hestia_get_update_time_tag( $option ) {
+		$current_option = 'hidden' === $option ? '' : $option;
+
+		$class  = 'updated';
+		$class .= ( 'hidden' === $option ) ? ' hestia-hidden' : '';
+		$time   = '<time class="' . esc_attr( $class ) . '" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">';
+		$time  .= esc_html( get_the_modified_date( $current_option ) );
+		$time  .= '</time>';
+		return $time;
+	}
+}
+
+if ( ! function_exists( 'hestia_is_license_valid' ) ) {
+	/**
+	 * Verify license is valid or not.
+	 *
+	 * @return bool
+	 */
+	function hestia_is_license_valid() {
+		$license_data = get_option( 'hestia_pro_license_data', false );
+
+		if ( $license_data === false ) {
+			return false;
+		}
+
+		if ( $license_data->license !== 'valid' ) {
+			return false;
+		}
+
+		return true;
+	}
+}
+
+if ( ! function_exists( 'hestia_scroll_icons' ) ) {
+	/**
+	 * Hestia scoll icons
+	 *
+	 * @return array
+	 */
+	function hestia_scroll_icons() {
+		$icons = array(
+			'stt-icon-style-1' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="12.5px" height="20px"><path fill="currentColor" d="M177 255.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 351.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 425.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1zm-34-192L7 199.7c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l96.4-96.4 96.4 96.4c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9l-136-136c-9.2-9.4-24.4-9.4-33.8 0z"></path></svg>',
+			'stt-icon-style-2' => '<svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect width="15" height="15" fill="none"/><path fill="currentColor" d="M2,8.48l-.65-.65a.71.71,0,0,1,0-1L7,1.14a.72.72,0,0,1,1,0l5.69,5.7a.71.71,0,0,1,0,1L13,8.48a.71.71,0,0,1-1,0L8.67,4.94v8.42a.7.7,0,0,1-.7.7H7a.7.7,0,0,1-.7-.7V4.94L3,8.47a.7.7,0,0,1-1,0Z"/></svg>',
+			'stt-icon-style-3' => '<svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect width="15" height="15" fill="none"/><path fill="currentColor" d="M14,12a1,1,0,0,1-.73-.32L7.5,5.47,1.76,11.65a1,1,0,0,1-1.4,0A1,1,0,0,1,.3,10.3l6.47-7a1,1,0,0,1,1.46,0l6.47,7a1,1,0,0,1-.06,1.4A1,1,0,0,1,14,12Z"/></svg>',
+			'stt-icon-style-4' => '<svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect width="15" height="15" fill="none"/><path fill="currentColor" d="M14.71,10.3l-6.48-7a1,1,0,0,0-1.46,0l-6.48,7A1,1,0,0,0,1,12H14a1,1,0,0,0,.73-1.68Z"/></svg>',
+			'stt-icon-style-5' => '<svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect width="15" height="15" fill="none"/><path fill="currentColor" d="M2,10.91l-.65-.65a.69.69,0,0,1,0-1L7,3.57a.72.72,0,0,1,1,0l5.69,5.7a.71.71,0,0,1,0,1l-.65.65a.71.71,0,0,1-1,0L8.67,7.37v6.56a.7.7,0,0,1-.7.7H7a.7.7,0,0,1-.7-.7V7.37L3,10.9A.69.69,0,0,1,2,10.91Z"/><rect fill="currentColor" x="1" y="0.37" width="13" height="2" rx="0.4"/></svg>',
+			'stt-icon-style-6' => '<svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><rect width="15" height="15" fill="none"/><path fill="currentColor" d="M7.86,1.93l5.83,10.2a.8.8,0,0,1-1.08,1.1L8,10.65a.83.83,0,0,0-.78,0L2.39,13.36a.79.79,0,0,1-1.1-1L6.45,2A.8.8,0,0,1,7.86,1.93Z"/></svg>',
+		);
+
+		return apply_filters( 'hestia_scroll_icons', $icons );
+	}
+}
+
+if ( ! function_exists( 'hestia_allow_icon_tag' ) ) {
+
+	/**
+	 * Allow icon tags.
+	 */
+	function hestia_allow_icon_tag() {
+		return apply_filters(
+			'hestia_allow_icon_tag',
+			array(
+				'svg'  => array(
+					'xmlns'       => true,
+					'viewbox'     => true,
+					'width'       => true,
+					'height'      => true,
+					'role'        => true,
+					'aria-hidden' => true,
+				),
+				'path' => array(
+					'd'    => true,
+					'fill' => true,
+				),
+				'rect' => array(
+					'width'  => true,
+					'height' => true,
+					'x'      => true,
+					'y'      => true,
+					'fill'   => true,
+					'rx'     => true,
+				),
+			)
+		);
+	}
+}

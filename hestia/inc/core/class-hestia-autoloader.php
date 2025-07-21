@@ -52,6 +52,7 @@ class Hestia_Autoloader {
 			'Hestia_Customizer_Section'                   => HESTIA_CORE_DIR . 'types',
 			'Hestia_Bootstrap_Navwalker'                  => HESTIA_PHP_INCLUDE,
 			'Hestia_Admin_Notices_Manager'                => HESTIA_PHP_INCLUDE . 'admin',
+			'Hestia_Welcome_Notice_Manager'               => HESTIA_PHP_INCLUDE . 'admin',
 			'Hestia_Metabox_Manager'                      => HESTIA_PHP_INCLUDE . 'admin/metabox',
 			'Hestia_Metabox_Main'                         => HESTIA_PHP_INCLUDE . 'admin/metabox',
 			'Hestia_Metabox_Controls_Base'                => HESTIA_PHP_INCLUDE . 'admin/metabox',
@@ -69,6 +70,7 @@ class Hestia_Autoloader {
 			'Hestia_Select_Multiple'                      => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/multi-select',
 			'Hestia_Customizer_Range_Value_Control'       => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/range-value',
 			'Hestia_Repeater'                             => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/repeater',
+			'Hestia_Sortable_Elements'                    => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/sortable-elements',
 			'Hestia_Hiding_Section'                       => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/section-hiding',
 			'Hestia_Customize_Control_Radio_Image'        => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/subcontrols-allowing',
 			'Hestia_Select_Hiding'                        => HESTIA_PHP_INCLUDE . 'customizer/controls/custom-controls/subcontrols-allowing',
@@ -79,12 +81,14 @@ class Hestia_Autoloader {
 			'Hestia_Button'                               => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Contact_Info'                         => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Control_Upsell'                       => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
+			'Hestia_Customize_Control_Radio'              => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Customizer_Heading'                   => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Generic_Notice_Section'               => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Main_Notice_Section'                  => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_PageBuilder_Button'                   => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Section_Docs'                         => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Section_Upsell'                       => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
+			'Hestia_Separator_Section'                    => HESTIA_PHP_INCLUDE . 'customizer/controls/ui',
 			'Hestia_Header_Controls'                      => HESTIA_PHP_INCLUDE . 'customizer/general',
 			'Hestia_Color_Controls'                       => HESTIA_PHP_INCLUDE . 'customizer/general',
 			'Hestia_General_Controls'                     => HESTIA_PHP_INCLUDE . 'customizer/general',
@@ -202,6 +206,7 @@ class Hestia_Autoloader {
 			'Hestia_View_Hooks_With_Upsell'               => HESTIA_PHP_INCLUDE . 'customizer/view-hooks',
 			'Hestia_Patterns'                             => HESTIA_PHP_INCLUDE . 'compatibility',
 			'Hestia_Setup_Wizard'                         => HESTIA_PHP_INCLUDE . 'setup-wizard',
+			'Hestia_Scroll_To_Top_Controls_Addon'         => HESTIA_PHP_INCLUDE . 'addons/customizer/general',
 		);
 	}
 
