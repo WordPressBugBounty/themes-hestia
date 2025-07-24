@@ -32,6 +32,13 @@ class Hestia_Sortable_Elements extends WP_Customize_Control {
 	public $custom_class = '';
 
 	/**
+	 * Toggle label for visibility toggle.
+	 *
+	 * @var string
+	 */
+	public $toggle_label = '';
+
+	/**
 	 * Elements to display in the control.
 	 *
 	 * @var array
@@ -50,6 +57,10 @@ class Hestia_Sortable_Elements extends WP_Customize_Control {
 
 		if ( array_key_exists( 'custom_class', $args ) ) {
 			$this->custom_class = esc_attr( $args['custom_class'] );
+		}
+
+		if ( array_key_exists( 'toggle_label', $args ) ) {
+			$this->toggle_label = $args['toggle_label'];
 		}
 	}
 
@@ -157,7 +168,7 @@ class Hestia_Sortable_Elements extends WP_Customize_Control {
 								<div class="hestia-item-visibility">
 									<a type="button" 
 											class="hestia-visibility-toggle" 
-											aria-label="<?php esc_attr_e( 'Toggle visibility', 'hestia' ); ?>"
+											aria-label="<?php echo esc_attr( $this->toggle_label ); ?>"
 											data-visible="<?php echo $element['visible'] ? 'true' : 'false'; ?>"
 											tabindex="-1">
 										<?php if ( $element['visible'] ) : ?>

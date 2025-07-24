@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'codeinwp/hestia-pro',
-        'pretty_version' => 'v3.3.0',
-        'version' => '3.3.0.0',
-        'reference' => 'c3e3a57dd4db1bf67f8997bab4a99c884f5cd37e',
+        'pretty_version' => 'v3.3.1',
+        'version' => '3.3.1.0',
+        'reference' => '4d51543b3d13537db0e8974b85646cd5d0f0bc70',
         'type' => 'wordpress-theme',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,32 +11,21 @@
     ),
     'versions' => array(
         'codeinwp/hestia-pro' => array(
-            'pretty_version' => 'v3.3.0',
-            'version' => '3.3.0.0',
-            'reference' => 'c3e3a57dd4db1bf67f8997bab4a99c884f5cd37e',
+            'pretty_version' => 'v3.3.1',
+            'version' => '3.3.1.0',
+            'reference' => '4d51543b3d13537db0e8974b85646cd5d0f0bc70',
             'type' => 'wordpress-theme',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'codeinwp/themeisle-sdk' => array(
-            'pretty_version' => '3.3.46',
-            'version' => '3.3.46.0',
-            'reference' => 'af2e7360bbe3af6a1bd2c3779fc33b7765104461',
+            'pretty_version' => '3.3.47',
+            'version' => '3.3.47.0',
+            'reference' => '59499ba103c0369c98b9e0d878826939e3e8e408',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codeinwp/themeisle-sdk',
             'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'codeinwp/ti-about-page' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '3332419a3facb9937289af0652fbd907c1a8d1cb',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../codeinwp/ti-about-page',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
             'dev_requirement' => false,
         ),
         'codeinwp/ti-onboarding' => array(

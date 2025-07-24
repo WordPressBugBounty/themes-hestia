@@ -441,19 +441,6 @@ class Hestia_Header_Layout_Manager extends Hestia_Abstract_Main {
 			}
 		}
 
-		$default_data = sprintf(
-			/* translators: %1$s is Author name, %2$s is publish date, %3$s is updated date */
-			__( 'Published by %1$s on %2$s %3$s', 'hestia' ),
-			'{hestia_author}',
-			'{hestia_publish_date}',
-			'{hestia_updated_date:hidden}'
-		);
-		$blog_single_page_data = get_theme_mod( 'hestia_blog_single_page_meta_data', $default_data );
-
-		if ( empty( $blog_single_page_data ) ) {
-			return;
-		}
-
 		global $post;
 		$post_meta_output = '';
 		$author_id        = $post->post_author;
@@ -466,23 +453,20 @@ class Hestia_Header_Layout_Manager extends Hestia_Abstract_Main {
 			$post_meta_output .= '<p class="author meta-in-content">';
 		}
 
-		if ( $blog_single_page_data ) {
-			$blog_single_page_data = preg_replace_callback(
-				'/{hestia_author}/',
-				function () use ( $author_name, $author_posts_url ) {
-					return sprintf(
-						'<a href="%2$s" title="%1$s" class="vcard author"><strong class="fn">%1$s</strong></a>',
-						$author_name,
-						esc_url( $author_posts_url )
-					);
-				},
-				$blog_single_page_data
-			);
-			$blog_single_page_data = hestia_process_date_meta( $blog_single_page_data );
-		}
-
-		$post_meta_output .= apply_filters( 'hestia_single_post_meta', $blog_single_page_data );
-
+		$post_meta_output .= apply_filters(
+			'hestia_single_post_meta',
+			sprintf(
+				/* translators: %1$s is Author name wrapped, %2$s is Date*/
+				esc_html__( 'Published by %1$s on %2$s', 'hestia' ),
+				/* translators: %1$s is Author name, %2$s is Author link*/
+				sprintf(
+					'<a href="%2$s" class="vcard author"><strong class="fn">%1$s</strong></a>',
+					esc_html( $author_name ),
+					esc_url( $author_posts_url )
+				),
+				$this->get_time_tags()
+			)
+		);
 		if ( 'default' === $header_layout ) {
 			$post_meta_output .= '</h4>';
 		} else {
@@ -490,6 +474,27 @@ class Hestia_Header_Layout_Manager extends Hestia_Abstract_Main {
 		}
 
 		return $post_meta_output;
+	}
+
+	/**
+	 * Get <time> tags.
+	 *
+	 * @return string
+	 */
+	private function get_time_tags() {
+		$time = '';
+
+		$time .= '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">';
+		$time .= esc_html( get_the_time( get_option( 'date_format' ) ) );
+		$time .= '</time>';
+		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
+			return $time;
+		}
+		$time .= '<time class="updated hestia-hidden" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">';
+		$time .= esc_html( get_the_time( get_option( 'date_format' ) ) );
+		$time .= '</time>';
+
+		return $time;
 	}
 
 	/**

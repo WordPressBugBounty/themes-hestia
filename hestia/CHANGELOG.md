@@ -1,3 +1,8 @@
+##### [Version 3.3.1](https://github.com/Codeinwp/hestia-pro/compare/v3.3.0...v3.3.1) (2025-07-24)
+
+- Fixed the fourth Shop Sidebar option not working
+- Updated dependencies
+
 #### [Version 3.3.0](https://github.com/Codeinwp/hestia-pro/compare/v3.2.11...v3.3.0) (2025-07-21)
 
 ### New Features

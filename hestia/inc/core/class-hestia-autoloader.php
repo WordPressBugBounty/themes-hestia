@@ -53,6 +53,9 @@ class Hestia_Autoloader {
 			'Hestia_Bootstrap_Navwalker'                  => HESTIA_PHP_INCLUDE,
 			'Hestia_Admin_Notices_Manager'                => HESTIA_PHP_INCLUDE . 'admin',
 			'Hestia_Welcome_Notice_Manager'               => HESTIA_PHP_INCLUDE . 'admin',
+			'Hestia_Dashboard_Plugin_Helper'              => HESTIA_PHP_INCLUDE . 'admin/dashboard',
+			'Hestia_Dashboard_Render'                     => HESTIA_PHP_INCLUDE . 'admin/dashboard',
+			'Hestia_Dashboard'                            => HESTIA_PHP_INCLUDE . 'admin',
 			'Hestia_Metabox_Manager'                      => HESTIA_PHP_INCLUDE . 'admin/metabox',
 			'Hestia_Metabox_Main'                         => HESTIA_PHP_INCLUDE . 'admin/metabox',
 			'Hestia_Metabox_Controls_Base'                => HESTIA_PHP_INCLUDE . 'admin/metabox',
@@ -181,6 +184,8 @@ class Hestia_Autoloader {
 			'Hestia_Elementor_Compatibility_Addon'        => HESTIA_PHP_INCLUDE . 'addons/plugin-compatibility',
 
 			'Hestia_Subscribe_Blog_Section'               => HESTIA_PHP_INCLUDE . 'addons/views/blog',
+			'Hestia_Blog_Post_Layout_Addon'               => HESTIA_PHP_INCLUDE . 'addons/views/blog',
+			'Hestia_Header_Layout_Manager_Addon'          => HESTIA_PHP_INCLUDE . 'addons/views/blog',
 			'Hestia_Front_Page_Shortcodes'                => HESTIA_PHP_INCLUDE . 'addons/views/front-page',
 			'Hestia_Clients_Bar_Section'                  => HESTIA_PHP_INCLUDE . 'addons/views/front-page',
 			'Hestia_Features_Section'                     => HESTIA_PHP_INCLUDE . 'addons/views/front-page',

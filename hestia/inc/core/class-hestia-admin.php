@@ -358,8 +358,7 @@ class Hestia_Admin {
 		$theme_args['description'] = apply_filters( 'ti_wl_theme_description', $theme->__get( 'Description' ) );
 		$theme_args['slug']        = $theme->__get( 'stylesheet' );
 
-		require_once TI_ABOUT_PAGE_DIR . 'includes/class-ti-about-render.php';
-		new TI_About_Render( $theme_args, $this->config, new Ti_About_Page() );
+		new Hestia_Dashboard_Render( $theme_args, $this->config, new Hestia_Dashboard() );
 	}
 
 	/**
@@ -845,33 +844,7 @@ class Hestia_Admin {
 		}
 
 		if ( 'toplevel_page_' . $this->theme_slug . '-welcome' === $screen->id ) {
-			wp_enqueue_style( 'ti-about-style', TI_ABOUT_PAGE_URL . 'assets/css/about.css', array(), TI_ABOUT_PAGE_VERSION );
-			wp_register_script(
-				'ti-about-scripts',
-				TI_ABOUT_PAGE_URL . 'assets/js/script.js',
-				array(
-					'jquery',
-				),
-				TI_ABOUT_PAGE_VERSION,
-				true
-			);
-
-			$about_us_page = new Ti_About_Page();
-
-			wp_localize_script(
-				'ti-about-scripts',
-				'tiAboutPageObject',
-				array(
-					'nr_actions_required' => $about_us_page->get_recommended_actions_left(),
-					'ajaxurl'             => admin_url( 'admin-ajax.php' ),
-					'nonce'               => wp_create_nonce( 'ti-about-nonce' ),
-					'template_directory'  => get_template_directory_uri(),
-					'activating_string'   => esc_html__( 'Activating', 'hestia' ),
-				)
-			);
-
-			wp_enqueue_script( 'ti-about-scripts' );
-			Ti_About_Plugin_Helper::instance()->enqueue_scripts();
+			( new Hestia_Dashboard() )->load_page_deps();
 		}
 
 		if ( ! in_array(
