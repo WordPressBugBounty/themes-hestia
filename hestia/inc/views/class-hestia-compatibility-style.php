@@ -1098,13 +1098,22 @@ class Hestia_Compatibility_Style {
 				  color: #1ab7ea;
 				}
 
-				.hestia-top-bar li a[href*="x.com"] {
+				.hestia-top-bar li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				) {
 				  font-size: 0;
 				}
-				.hestia-top-bar li a[href*="x.com"]:before {
+				.hestia-top-bar li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):before {
 				  content: "\e61b";
 				}
-				.hestia-top-bar li a[href*="x.com"]:hover:before {
+				.hestia-top-bar li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):hover:before {
 				  color: #000;
 				}
 			';
@@ -1130,7 +1139,10 @@ class Hestia_Compatibility_Style {
 			$css = '
 				.footer-big .footer-menu li a[href*="facebook.com"],
 				.footer-big .footer-menu li a[href*="twitter.com"],
-				.footer-big .footer-menu li a[href*="x.com"],
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				),
 				.footer-big .footer-menu li a[href*="pinterest.com"],
 				.footer-big .footer-menu li a[href*="google.com"],
 				.footer-big .footer-menu li a[href*="linkedin.com"],
@@ -1164,7 +1176,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="snapchat.com"]:hover,
 				.footer-big .footer-menu li a[href*="deviantart.com"]:hover,
 				.footer-big .footer-menu li a[href*="vimeo.com"]:hover,
-				.footer-big .footer-menu li a[href*="x.com"]:hover {
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):hover {
 				  opacity: 1 !important;
 				}
 				
@@ -1213,7 +1228,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="vimeo.com"]:hover:before {
 				    color: #1ab7ea;
 				}
-				.footer-big .footer-menu li a[href*="x.com"]:hover:before {
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):hover:before {
 					color: #000;
 				}
 				
@@ -1232,7 +1250,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="snapchat.com"]:before,
 				.footer-big .footer-menu li a[href*="deviantart.com"]:before,
 				.footer-big .footer-menu li a[href*="vimeo.com"]:before,
-				.footer-big .footer-menu li a[href*="x.com"]:before {
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):before {
 				    font-family: "Font Awesome 5 Brands";
 				    font-weight: 900;
 				    color: #3c4858;
@@ -1254,7 +1275,10 @@ class Hestia_Compatibility_Style {
 				.footer-black .footer-menu li a[href*="snapchat.com"]:before,
 				.footer-black .footer-menu li a[href*="deviantart.com"]:before,
 				.footer-black .footer-menu li a[href*="vimeo.com"]:before,
-				.footer-big .footer-menu li a[href*="x.com"]:before {
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):before {
 				  color: #fff;
 				}
 				
@@ -1319,7 +1343,10 @@ class Hestia_Compatibility_Style {
 				  content: "\f27d";
 				}
 
-				.footer-big .footer-menu li a[href*="x.com"]:before  {
+				.footer-big .footer-menu li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):before {
 				  content: "\e61b";
 				}
 			';
@@ -1492,13 +1519,22 @@ class Hestia_Compatibility_Style {
 				  color: #1ab7ea;
 				}
 
-				.navbar .navbar-nav li a[href*="x.com"] {
+				.navbar .navbar-nav li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				) {
 				  font-size: 0;
 				}
-				.navbar .navbar-nav li a[href*="x.com"]:before {
+				.navbar .navbar-nav li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):before {
 				  content: "\e61b";
 				}
-				.navbar .navbar-nav li a[href*="x.com"]:hover:before {
+				.navbar .navbar-nav li a:is(
+					[href*="://x.com"],
+					[href*="://www.x.com"]
+				):hover:before {
 				  color: #000;
 				}
 			';

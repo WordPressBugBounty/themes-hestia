@@ -1,3 +1,7 @@
+##### [Version 3.3.2](https://github.com/Codeinwp/hestia-pro/compare/v3.3.1...v3.3.2) (2025-08-11)
+
+- Fixed issue with domains ending with x.com being converted to X icon
+
 ##### [Version 3.3.1](https://github.com/Codeinwp/hestia-pro/compare/v3.3.0...v3.3.1) (2025-07-24)
 
 - Fixed the fourth Shop Sidebar option not working
