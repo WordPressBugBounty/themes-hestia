@@ -1,3 +1,7 @@
+##### [Version 3.3.3](https://github.com/Codeinwp/hestia-pro/compare/v3.3.2...v3.3.3) (2025-09-04)
+
+- Updated dependencies
+
 ##### [Version 3.3.2](https://github.com/Codeinwp/hestia-pro/compare/v3.3.1...v3.3.2) (2025-08-11)
 
 - Fixed issue with domains ending with x.com being converted to X icon
