@@ -107,6 +107,14 @@ class Hestia_Gutenberg extends Hestia_Abstract_Main {
 		$css .= '@media( min-width: 480px ) {' . $this->tablet_style . '}';
 		$css .= '@media( min-width: 768px ) {' . $this->desktop_style . '}';
 
+		$hestia_body_font = get_theme_mod( 'hestia_body_font', apply_filters( 'hestia_body_font_default', false ) );
+		if ( ! empty( $hestia_body_font ) ) {
+			$css .= '
+				body, ul, .tooltip-inner {
+					font-family: ' . esc_html( $hestia_body_font ) . ';
+				}';
+		}
+
 		return $css;
 	}
 

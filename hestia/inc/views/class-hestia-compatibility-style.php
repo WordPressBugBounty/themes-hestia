@@ -978,13 +978,22 @@ class Hestia_Compatibility_Style {
 				  color: #cc2127;
 				}
 				
-				.hestia-top-bar li a[href*="google.com"] {
+				.hestia-top-bar li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				) {
 				  font-size: 0;
 				}
-				.hestia-top-bar li a[href*="google.com"]:before {
+				.hestia-top-bar li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):before {
 				  content: "\f1a0";
 				}
-				.hestia-top-bar li a[href*="google.com"]:hover:before {
+				.hestia-top-bar li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):hover:before {
 				  color: #dd4b39;
 				}
 				
@@ -1144,7 +1153,10 @@ class Hestia_Compatibility_Style {
 					[href*="://www.x.com"]
 				),
 				.footer-big .footer-menu li a[href*="pinterest.com"],
-				.footer-big .footer-menu li a[href*="google.com"],
+				.footer-big .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				),
 				.footer-big .footer-menu li a[href*="linkedin.com"],
 				.footer-big .footer-menu li a[href*="dribbble.com"],
 				.footer-big .footer-menu li a[href*="github.com"],
@@ -1164,7 +1176,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="facebook.com"]:hover,
 				.footer-big .footer-menu li a[href*="twitter.com"]:hover,
 				.footer-big .footer-menu li a[href*="pinterest.com"]:hover,
-				.footer-big .footer-menu li a[href*="google.com"]:hover,
+				.footer-big .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):hover,
 				.footer-big .footer-menu li a[href*="linkedin.com"]:hover,
 				.footer-big .footer-menu li a[href*="dribbble.com"]:hover,
 				.footer-big .footer-menu li a[href*="github.com"]:hover,
@@ -1192,7 +1207,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="pinterest.com"]:hover:before {
 				    color: #cc2127;
 				}
-				.footer-big .footer-menu li a[href*="google.com"]:hover:before {
+				.footer-big .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):hover:before {
 				    color: #dd4b39;
 				}
 				.footer-big .footer-menu li a[href*="linkedin.com"]:hover:before {
@@ -1238,7 +1256,10 @@ class Hestia_Compatibility_Style {
 				.footer-big .footer-menu li a[href*="facebook.com"]:before,
 				.footer-big .footer-menu li a[href*="twitter.com"]:before,
 				.footer-big .footer-menu li a[href*="pinterest.com"]:before,
-				.footer-big .footer-menu li a[href*="google.com"]:before,
+				.footer-big .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):before,
 				.footer-big .footer-menu li a[href*="linkedin.com"]:before,
 				.footer-big .footer-menu li a[href*="dribbble.com"]:before,
 				.footer-big .footer-menu li a[href*="github.com"]:before,
@@ -1263,7 +1284,10 @@ class Hestia_Compatibility_Style {
 				.footer-black .footer-menu li a[href*="facebook.com"]:before,
 				.footer-black .footer-menu li a[href*="twitter.com"]:before,
 				.footer-black .footer-menu li a[href*="pinterest.com"]:before,
-				.footer-black .footer-menu li a[href*="google.com"]:before,
+				.footer-black .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):before,
 				.footer-black .footer-menu li a[href*="linkedin.com"]:before,
 				.footer-black .footer-menu li a[href*="dribbble.com"]:before,
 				.footer-black .footer-menu li a[href*="github.com"]:before,
@@ -1295,7 +1319,10 @@ class Hestia_Compatibility_Style {
 				  content: "\f231";
 				}
 				
-				.footer-big .footer-menu li a[href*="google.com"]:before {
+				.footer-big .footer-menu li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):before {
 				  content: "\f1a0";
 				}
 				
@@ -1399,13 +1426,22 @@ class Hestia_Compatibility_Style {
 				  color: #cc2127;
 				}
 				
-				.navbar .navbar-nav li a[href*="google.com"] {
+				.navbar .navbar-nav li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				) {
 				  font-size: 0;
 				}
-				.navbar .navbar-nav li a[href*="google.com"]:before {
+				.navbar .navbar-nav li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):before {
 				  content: "\f1a0";
 				}
-				.navbar .navbar-nav li a[href*="google.com"]:hover:before {
+				.navbar .navbar-nav li a:is(
+					[href*="://google.com"],
+					[href*="://www.google.com"]
+				):hover:before {
 				  color: #dd4b39;
 				}
 				

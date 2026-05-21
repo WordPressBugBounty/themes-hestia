@@ -2086,3 +2086,28 @@ ul:where([id*=hestia_footer_content], [id*=hestia_buttons_style], [id*=hestia_to
 [class*=alpha-color]:has(.alpha-color-locked) {
   opacity: 0.4;
 }
+
+.customize-control .button .dashicons {
+  line-height: 1;
+}
+
+.customize-control input[type=text],
+.customize-control input[type=password],
+.customize-control input[type=date],
+.customize-control input[type=datetime],
+.customize-control input[type=datetime-local],
+.customize-control input[type=email],
+.customize-control input[type=month],
+.customize-control input[type=number],
+.customize-control input[type=search],
+.customize-control input[type=tel],
+.customize-control input[type=time],
+.customize-control input[type=url],
+.customize-control input[type=week] {
+  min-height: 30px;
+}
+
+.control-section-hestia-section-docs .accordion-section-title .button {
+  line-height: 1.923077;
+  min-height: 30px;
+}

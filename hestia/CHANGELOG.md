@@ -1,3 +1,12 @@
+##### [Version 3.3.4](https://github.com/Codeinwp/hestia-pro/compare/v3.3.3...v3.3.4) (2026-05-21)
+
+- Fixed issue when Custom Link containing google.com at the end gets transformed into Google icon
+- Updated video link in onboarding and dashboard
+- Improved keyboard navigation for sub-menus
+- Fixed loading of font-family in block editor
+- Improved compatibility with WP 7.0
+- Updated dependencies
+
 ##### [Version 3.3.3](https://github.com/Codeinwp/hestia-pro/compare/v3.3.2...v3.3.3) (2025-09-04)
 
 - Updated dependencies

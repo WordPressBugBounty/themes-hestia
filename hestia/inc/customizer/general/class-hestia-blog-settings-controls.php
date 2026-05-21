@@ -74,7 +74,7 @@ class Hestia_Blog_Settings_Controls extends Hestia_Register_Customizer_Controls 
 			new Hestia_Customizer_Control(
 				'hestia_featured_posts_category',
 				array(
-					'sanitize_callback' => 'hestia_sanitize_array',
+					'sanitize_callback' => 'sanitize_text_field',
 					'default'           => apply_filters( 'hestia_featured_posts_category_default', 0 ),
 				),
 				array(

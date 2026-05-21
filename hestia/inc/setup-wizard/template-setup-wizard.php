@@ -302,7 +302,7 @@ $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 									</div>
 									<div class="video-box">
 										<?php
-										$youtube_video = 'https://www.youtube-nocookie.com/embed/bpom4SSyo-8';
+										$youtube_video = 'https://www.youtube-nocookie.com/embed/VHKeDMT5xRQ';
 										if ( defined( 'ELEMENTOR_PATH' ) && class_exists( 'Elementor\Widget_Base', false ) ) {
 											$youtube_video = 'https://www.youtube.com/embed/JOKgkykzvlg';
 										}

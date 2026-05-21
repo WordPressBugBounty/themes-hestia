@@ -622,7 +622,7 @@ class Hestia_Repeater extends WP_Customize_Control {
 		if ( ! empty( $value ) ) {
 			$social_repeater = json_decode( html_entity_decode( $value ), true );
 		}
-		if ( ( count( $social_repeater ) === 1 && '' === $social_repeater[0] ) || empty( $social_repeater ) ) {
+		if ( empty( $social_repeater ) || ( count( $social_repeater ) === 1 && '' === $social_repeater[0] ) ) {
 			?>
 			<div class="customizer-repeater-social-repeater">
 				<div class="customizer-repeater-social-repeater-container">

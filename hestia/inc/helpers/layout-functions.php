@@ -901,6 +901,10 @@ function hestia_featured_posts_enabled() {
 		return false;
 	}
 
+	if ( ! is_array( $featured_posts_category ) ) {
+		$featured_posts_category = array( $featured_posts_category );
+	}
+
 	if ( count( $featured_posts_category ) === 1 && empty( $featured_posts_category[0] ) ) {
 		return false;
 	}

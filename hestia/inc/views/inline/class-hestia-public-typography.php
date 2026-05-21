@@ -664,11 +664,16 @@ class Hestia_Public_Typography extends Hestia_Inline_Style_Manager {
 		if ( hestia_enable_local_fonts() ) {
 			$urls = array_filter(
 				$urls,
-				function( $url ) {
-					if ( strpos( $url, 'fonts.googleapis.com' ) !== false ) {
-						return;
+				function ( $url ) {
+					if ( is_string( $url ) ) {
+						return strpos( $url, 'fonts.googleapis.com' ) === false;
 					}
-					return $url;
+
+					if ( is_array( $url ) && isset( $url['href'] ) ) {
+						return strpos( $url['href'], 'fonts.googleapis.com' ) === false;
+					}
+
+					return true;
 				}
 			);
 		}

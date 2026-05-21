@@ -3,7 +3,7 @@
 **Tags:** blog, custom-logo, portfolio, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, editor-style, footer-widgets, left-sidebar, right-sidebar, wide-blocks  
 **Requires at least:** 4.0  
 **Tested up to:** 5.8.2  
-**Stable tag:** 3.3.3  
+**Stable tag:** 3.3.4  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,6 +17,18 @@ Hestia WordPress theme, Copyright 2018 Themeisle.
 Hestia is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.3.4](https://github.com/Codeinwp/hestia-pro/compare/v3.3.3...v3.3.4) (2026-05-21)
+
+- Fixed issue when Custom Link containing google.com at the end gets transformed into Google icon
+- Updated video link in onboarding and dashboard
+- Improved keyboard navigation for sub-menus
+- Fixed loading of font-family in block editor
+- Improved compatibility with WP 7.0
+- Updated dependencies
+
+
+
 
 ##### [Version 3.3.3](https://github.com/Codeinwp/hestia-pro/compare/v3.3.2...v3.3.3) (2025-09-04)
 

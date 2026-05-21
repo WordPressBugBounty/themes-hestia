@@ -19,6 +19,27 @@
 class Hestia_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 	/**
+	 * Flag to check if the accessibility JS was already enqueued.
+	 *
+	 * @var bool
+	 */
+	public static $accessibility_menu_enqueued = false;
+
+	/**
+	 * Flag used to add inline sidebar accessibility styles.
+	 *
+	 * @var bool
+	 */
+	public static $add_sidebar_accessibility_style = false;
+
+	/**
+	 * Hestia_Bootstrap_Navwalker constructor.
+	 */
+	public function __construct() {
+		add_action( 'hestia_after_header_hook', array( $this, 'inline_style_for_sidebar' ) );
+	}
+
+	/**
 	 * Start_lvl
 	 *
 	 * @see   Walker::start_lvl()
@@ -46,6 +67,11 @@ class Hestia_Bootstrap_Navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+		// Only enqueue accessibility js listeners if menu uses sub-menus.
+		if ( ! self::$accessibility_menu_enqueued && $args->has_children ) {
+			$this->enqueue_accessibility_menu_js();
+		}
 
 		/**
 		 * Dividers, Headers or Disabled
@@ -136,7 +162,7 @@ class Hestia_Bootstrap_Navwalker extends Walker_Nav_Menu {
 				$item_output .= '<a' . $attributes . '>';
 			}
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= ( $args->has_children ) ? ' <span class="caret-wrap"><span class="caret"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></span></span></a>' : '</a>';
+			$item_output .= ( $args->has_children ) ? ' <span class="caret-wrap" aria-pressed="false" aria-label="' . esc_attr__( 'Open Submenu', 'hestia' ) . '" tabindex="0" role="button"><span class="caret"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></span></span></a>' : '</a>';
 
 			if ( ! empty( $item->description ) && ( $item->description !== ' ' ) && $depth >= 1 ) {
 				$item_output .= '<span class="hestia-mm-description">' . $item->description . '</span>';
@@ -248,5 +274,60 @@ class Hestia_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 			echo wp_kses( $fb_output, $allowed_html );
 		}
+	}
+
+	/**
+	 * Enqueue menu accessibility script
+	 */
+	public function enqueue_accessibility_menu_js() {
+		if ( self::$accessibility_menu_enqueued ) {
+			return;
+		}
+
+		$script = "
+		var menuCarets = document.querySelectorAll(
+			'ul.nav li > a > .caret-wrap'
+		);
+		Array.prototype.forEach.call(menuCarets, function (caretElem) {
+ 			caretElem.addEventListener( 'keydown', function (event) {
+				const key = event.key;
+ 				const keyCode = event.keyCode || event.which;
+ 				const isEnter = key === 'Enter' || keyCode === 13;
+				if ( isEnter ) {
+ 					event.preventDefault();
+ 					event.stopPropagation();
+ 					caretElem.parentElement.classList.toggle('active');
+ 					if ( caretElem.getAttribute('aria-pressed') ) {
+ 						caretElem.setAttribute(
+ 							'aria-pressed',
+ 							caretElem.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
+ 						);
+					}
+				}
+			});
+			caretElem.parentElement.parentElement.addEventListener( 'focusout', function (event) {
+				// If focus is still in the element, do nothing
+				if ( caretElem.parentElement.parentElement.contains(event.relatedTarget) ) {
+					return;
+				}
+				caretElem.parentElement.classList.remove('active');
+				caretElem.setAttribute('aria-pressed', 'false');
+			});
+		} );
+		";
+
+		wp_add_inline_script( 'hestia_scripts', $script );
+		self::$accessibility_menu_enqueued = true;
+	}
+
+	/**
+	 * Print inline styles if sidebar is used.
+	 */
+	public function inline_style_for_sidebar() {
+		if ( self::$add_sidebar_accessibility_style ) {
+			return;
+		}
+		echo '<style>ul.navbar-nav li:focus-within > a.active:has(.caret-wrap) + .dropdown-menu { opacity: 1; visibility: visible; }</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		self::$add_sidebar_accessibility_style = true;
 	}
 }
