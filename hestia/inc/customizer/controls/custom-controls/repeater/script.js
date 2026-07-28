@@ -415,6 +415,8 @@ jQuery( document ).ready(
 		jQuery( '.customizer-repeater-general-control-droppable' ).sortable(
 			{
 				axis: 'y',
+				// Restrict dragging to the box header so touch-punch doesn't swallow taps on the fields (mobile keyboard/focus).
+				handle: '.customizer-repeater-customize-control-title',
 				update: function () {
 					customizer_repeater_refresh_general_control_values();
 				}

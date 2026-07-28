@@ -3,7 +3,7 @@
 **Tags:** blog, custom-logo, portfolio, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, editor-style, footer-widgets, left-sidebar, right-sidebar, wide-blocks  
 **Requires at least:** 4.0  
 **Tested up to:** 5.8.2  
-**Stable tag:** 3.3.4  
+**Stable tag:** 3.3.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,6 +17,15 @@ Hestia WordPress theme, Copyright 2018 Themeisle.
 Hestia is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.3.5](https://github.com/Codeinwp/hestia-pro/compare/v3.3.4...v3.3.5) (2026-07-28)
+
+- Fixed an issue where the license key field could become hidden by the White Label feature, which is now available only to Agency plan customers.
+- Improved the editor on the Hooks page so that long content no longer stretches or breaks the page layout and can be scrolled comfortably.
+- Updated dependencies
+
+
+
 
 ##### [Version 3.3.4](https://github.com/Codeinwp/hestia-pro/compare/v3.3.3...v3.3.4) (2026-05-21)
 

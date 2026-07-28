@@ -759,38 +759,6 @@ class Hestia_Admin {
 	}
 
 	/**
-	 * Get the plan category for the product plan ID.
-	 *
-	 * @param object $license_data The license data.
-	 *
-	 * @return int
-	 */
-	private function plan_category( $license_data ) {
-
-		if ( ! isset( $license_data->plan ) || ! is_numeric( $license_data->plan ) ) {
-			return 0; // Free
-		}
-
-		$plan             = (int) $license_data->plan;
-		$current_category = -1; // Unknown category.
-
-		$categories = array(
-			'1' => array( 1, 4, 9 ), // Personal
-			'2' => array( 2, 5, 8 ), // Business/Developer
-			'3' => array( 3, 6, 7, 10 ), // Agency
-		);
-
-		foreach ( $categories as $category => $plans ) {
-			if ( in_array( $plan, $plans, true ) ) {
-				$current_category = (int) $category;
-				break;
-			}
-		}
-
-		return $current_category;
-	}
-
-	/**
 	 * Get the data used for the survey.
 	 *
 	 * @param array  $data The survey data in Formbricks format.
@@ -809,7 +777,7 @@ class Hestia_Admin {
 				'license_status'      => ! empty( $license_saved->license ) ? $license_saved->license : 'invalid',
 				'install_days_number' => $install_days_number,
 				'version'             => HESTIA_VERSION,
-				'plan'                => $this->plan_category( $license_saved ),
+				'plan'                => class_exists( 'Hestia_Main_Addon' ) ? Hestia_Main_Addon::plan_category( $license_saved ) : 0,
 			),
 		);
 

@@ -1,3 +1,9 @@
+##### [Version 3.3.5](https://github.com/Codeinwp/hestia-pro/compare/v3.3.4...v3.3.5) (2026-07-28)
+
+- Fixed an issue where the license key field could become hidden by the White Label feature, which is now available only to Agency plan customers.
+- Improved the editor on the Hooks page so that long content no longer stretches or breaks the page layout and can be scrolled comfortably.
+- Updated dependencies
+
 ##### [Version 3.3.4](https://github.com/Codeinwp/hestia-pro/compare/v3.3.3...v3.3.4) (2026-05-21)
 
 - Fixed issue when Custom Link containing google.com at the end gets transformed into Google icon
