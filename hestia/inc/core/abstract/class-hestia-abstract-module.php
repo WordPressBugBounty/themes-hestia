@@ -42,12 +42,15 @@ abstract class Hestia_Abstract_Module {
 		foreach ( $this->classes_to_load as $class_name => $class_path ) {
 			$filename  = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
 			$full_path = trailingslashit( $class_path ) . $filename;
-			if ( is_file( $full_path ) ) {
-				require $full_path;
-				$instance = new $class_name();
-				if ( method_exists( $instance, 'init' ) ) {
-					$instance->init();
-				}
+
+			// Skip classes whose file is unavailable instead of ending the request.
+			if ( ! \Hestia_Autoloader::load_class_file( $class_name, $full_path ) ) {
+				continue;
+			}
+
+			$instance = new $class_name();
+			if ( method_exists( $instance, 'init' ) ) {
+				$instance->init();
 			}
 		}
 

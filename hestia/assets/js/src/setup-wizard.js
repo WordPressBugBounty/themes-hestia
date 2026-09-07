@@ -85,14 +85,17 @@ jQuery( document ).ready( function( $ ) {
 			var current_item = $(this).parents();
 			$('.hestia-accordion .hestia-accordion-item .hestia-accordion-item__content').each(
 				function (i, el) {
+					var btn = $(el).prev().find('.hestia-accordion-item__button');
 					if ($(el).parent().is(current_item)) {
 						$(el).prev().toggleClass('is-active');
 						$(el).slideToggle();
 						$(this).toggleClass('is-active');
+						btn.attr('aria-expanded', btn.attr('aria-expanded') === 'true' ? 'false' : 'true');
 					} else {
 						$(el).prev().removeClass('is-active');
 						$(el).slideUp();
 						$(this).removeClass('is-active');
+						btn.attr('aria-expanded', 'false');
 					}
 				}
 			);

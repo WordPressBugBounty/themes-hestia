@@ -29,10 +29,10 @@ class Hestia_Woocommerce_Manager extends Hestia_Abstract_Module {
 			'Hestia_Woo_Account_Page' => HESTIA_PHP_INCLUDE . 'modules/woo_enhancements/views/class-hestia-woo-account-page.php',
 		);
 		foreach ( $submodules as $module => $path ) {
-			if ( ! is_file( $path ) ) {
+			// Skip a submodule whose file cannot be opened rather than ending the request.
+			if ( ! Hestia_Autoloader::load_class_file( $module, $path ) ) {
 				continue;
 			}
-			require $path;
 			$instance = new $module();
 			add_action( 'wp', array( $instance, 'run' ) );
 		}

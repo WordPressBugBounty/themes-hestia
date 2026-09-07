@@ -233,10 +233,62 @@ class Hestia_Autoloader {
 
 		$filename  = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
 		$full_path = trailingslashit( $this->classes_to_load[ $class_name ] ) . $filename;
-		if ( is_file( $full_path ) ) {
-			require $full_path;
+
+		return self::load_class_file( $class_name, $full_path );
+	}
+
+	/**
+	 * Load a mapped class file without letting an unavailable file end the request.
+	 *
+	 * @param   string $class_name The class the file is expected to declare.
+	 * @param   string $full_path  Absolute path of the class file.
+	 *
+	 * @return  bool Whether the class is available after the attempt.
+	 */
+	public static function load_class_file( $class_name, $full_path ) {
+		if ( class_exists( $class_name, false ) ) {
+			return true;
 		}
 
-		return true;
+		clearstatcache( true, $full_path );
+		if ( ! is_file( $full_path ) || ! is_readable( $full_path ) ) {
+			self::log_failure( $class_name, $full_path );
+
+			return false;
+		}
+
+		include_once $full_path;
+
+		if ( class_exists( $class_name, false ) ) {
+			return true;
+		}
+
+		self::log_failure( $class_name, $full_path );
+
+		return false;
+	}
+
+	/**
+	 * Log a class file that could not be loaded.
+	 *
+	 * @access  private
+	 *
+	 * @param   string $class_name The class that could not be loaded.
+	 * @param   string $full_path  Absolute path of the class file.
+	 *
+	 * @return  void
+	 */
+	private static function log_failure( $class_name, $full_path ) {
+		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+			return;
+		}
+
+		error_log(
+			sprintf(
+				'Hestia: skipped %1$s, class file is not available at %2$s.',
+				$class_name,
+				$full_path
+			)
+		);
 	}
 }

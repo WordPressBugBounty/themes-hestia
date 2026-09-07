@@ -170,6 +170,20 @@ class Hestia_Core {
 	 * @access   private
 	 */
 	private function define_hooks() {
+		$this->define_admin_hooks();
+		$this->define_public_hooks();
+		$this->define_pattern_hooks();
+	}
+
+	/**
+	 * Register the admin hooks.
+	 *
+	 * @access   private
+	 */
+	private function define_admin_hooks() {
+		if ( ! class_exists( 'Hestia_Admin' ) ) {
+			return;
+		}
 
 		$admin = new Hestia_Admin();
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
@@ -187,6 +201,17 @@ class Hestia_Core {
 		add_action( 'admin_menu', array( $admin, 'register_menu_pages' ) );
 		add_action( 'init', array( $admin, 'register_about_page' ), 1 );
 		add_action( 'themeisle_ob_after_single_plugin_activation', array( $admin, 'hestia_after_plugin_activation' ) );
+	}
+
+	/**
+	 * Register the front-end hooks.
+	 *
+	 * @access   private
+	 */
+	private function define_public_hooks() {
+		if ( ! class_exists( 'Hestia_Public' ) ) {
+			return;
+		}
 
 		$front_end = new Hestia_Public();
 		add_filter( 'frontpage_template', array( $front_end, 'filter_front_page_template' ) );
@@ -196,8 +221,18 @@ class Hestia_Core {
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $front_end, 'enqueue_custom_fonts' ) );
 		add_action( 'elementor/frontend/before_register_styles', array( $front_end, 'enqueue_before_elementor' ) );
+	}
 
-		// Register patterns.
+	/**
+	 * Register the block patterns.
+	 *
+	 * @access   private
+	 */
+	private function define_pattern_hooks() {
+		if ( ! class_exists( 'Hestia_Patterns' ) ) {
+			return;
+		}
+
 		$patterns = new Hestia_Patterns();
 		add_action( 'init', array( $patterns, 'define_patterns' ) );
 	}

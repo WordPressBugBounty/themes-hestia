@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.8.2
 Requires PHP:   5.4.0
 Description:    Hestia is a modern WordPress theme for professionals. It fits creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It has a multipurpose one-page design, widgetized footer, blog/news page and a clean look, is compatible with: Flat Parallax Slider, Photo Gallery, Travel Map and Elementor Page Builder . The theme is responsive, WPML, Retina ready, SEO friendly, and uses Material Kit for design.
-Version:        3.3.5
+Version:        3.3.6
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    hestia
@@ -5197,6 +5197,10 @@ figure.wp-block-pullquote cite {
   height: 1px;
 }
 
+.wp-block-details summary {
+  display: list-item;
+}
+
 /*--------------------------------------------------------------
 # Page
 --------------------------------------------------------------*/
@@ -6232,6 +6236,14 @@ body:not(.home) .wrapper .content-area {
   }
 }
 @media (max-width: 600px) {
+  body.admin-bar .navbar:not(.header-with-topbar).navbar-transparent {
+    margin-top: 0;
+    top: 46px;
+  }
+  body.admin-bar .navbar:not(.header-with-topbar).navbar-not-transparent {
+    margin-top: 0;
+    top: 46px;
+  }
   body.admin-bar .navbar.navbar-scroll-point {
     top: 0;
   }
@@ -6241,6 +6253,9 @@ body:not(.home) .wrapper .content-area {
   body.admin-bar .navbar.navbar-scroll-point.navbar-transparent {
     margin-top: 0;
     top: 46px;
+  }
+  body.admin-bar .navbar.navbar-scroll-point.navbar-not-transparent {
+    top: 0;
   }
   body.admin-bar .navbar.navbar-not-transparent {
     margin-top: 0;

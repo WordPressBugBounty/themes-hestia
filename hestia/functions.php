@@ -6,7 +6,7 @@
  * @since   Hestia 1.0
  */
 
-define( 'HESTIA_VERSION', '3.3.5' );
+define( 'HESTIA_VERSION', '3.3.6' );
 define( 'HESTIA_VENDOR_VERSION', '1.0.2' );
 define( 'HESTIA_PHP_INCLUDE', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'HESTIA_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
@@ -59,6 +59,31 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 }
 
 /**
+ * Whether a Composer autoload file can be included without fataling.
+ *
+ * The ti-white-label load.php hard-requires class-ti-white-label.php, so on a
+ * partial vendor tree (e.g. a theme update replacing files mid-request) the
+ * bootstrap must be skipped instead of fataling the request (#2968).
+ *
+ * @param string $file Autoload file path.
+ * @return bool
+ */
+function hestia_is_vendor_file_loadable( $file ) {
+	if ( ! is_readable( $file ) ) {
+		return false;
+	}
+
+	$package_dir              = dirname( $file );
+	$is_white_label_bootstrap = 'load.php' === basename( $file ) && 'ti-white-label' === basename( $package_dir );
+
+	if ( $is_white_label_bootstrap && ! is_readable( $package_dir . '/class-ti-white-label.php' ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Begins execution of the theme core.
  *
  * Since everything within the plugin is registered via hooks,
@@ -73,7 +98,7 @@ function hestia_run() {
 	if ( is_readable( $vendor_file ) ) {
 		$files = require_once $vendor_file;
 		foreach ( $files as $file ) {
-			if ( is_readable( $file ) ) {
+			if ( hestia_is_vendor_file_loadable( $file ) ) {
 				include_once $file;
 			}
 		}

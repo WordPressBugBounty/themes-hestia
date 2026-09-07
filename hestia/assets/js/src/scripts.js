@@ -1036,7 +1036,7 @@
 		'addScrollClass': function () {
 			$( window ).on(
 				'scroll', function () {
-					if ( $( document ).scrollTop() >= navbarScrollPoint ) {
+					if ( $( document ).scrollTop() > navbarScrollPoint ) {
 						$( '.navbar-fixed-top' ).addClass( 'navbar-scroll-point' );
 					} else {
 						$( '.navbar-fixed-top' ).removeClass( 'navbar-scroll-point' );

@@ -1,3 +1,16 @@
+##### [Version 3.3.6](https://github.com/Codeinwp/hestia-pro/compare/v3.3.5...v3.3.6) (2026-09-07)
+
+- Improved the accessibility of the setup wizards plugin recommendation accordions for screen reader users.
+- Fixed the sticky navigation bar overlapping the WordPress admin bar on small screens.
+- Fixed a crash when changing the footer layout in the Customizer.
+- Improved stability by preventing fatal errors when a theme class file is missing or unreadable.
+- Fixed front-page repeater fields being uneditable in the mobile Customizer while preserving drag-to-reorder from item headers.
+- Fixed frontend errors when White Label files are missing.
+- Fixed checkout pages showing a WooCommerce deprecation notice.
+- Fixed the missing disclosure marker in Details blocks on the frontend.
+- Fixed WooCommerce pages failing when a product page file is unavailable.
+- Updated dependencies
+
 ##### [Version 3.3.5](https://github.com/Codeinwp/hestia-pro/compare/v3.3.4...v3.3.5) (2026-07-28)
 
 - Fixed an issue where the license key field could become hidden by the White Label feature, which is now available only to Agency plan customers.

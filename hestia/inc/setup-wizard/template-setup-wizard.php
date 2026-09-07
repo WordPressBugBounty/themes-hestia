@@ -14,6 +14,7 @@ $skip_wizard            = add_query_arg(
 );
 $wp_optimole_active     = is_plugin_active( 'optimole-wp/optimole-wp.php' );
 $wp_orbit_fox_active    = is_plugin_active( 'themeisle-companion/themeisle-companion.php' );
+$wp_hyve_installed      = file_exists( WP_PLUGIN_DIR . '/hyve-lite/hyve-lite.php' ); // Hide recommendation when installed, even if inactive.
 $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 ?>
 <div class="hestia-wizard-wrap">
@@ -130,7 +131,7 @@ $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 						</div>
 					</div>
 				</div>
-				<?php if ( ! $wp_optimole_active || ! $wp_orbit_fox_active || ! $wp_otter_blocks_active ) : ?>
+				<?php if ( ! $wp_optimole_active || ! $wp_hyve_installed || ! $wp_orbit_fox_active || ! $wp_otter_blocks_active ) : ?>
 					<div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
 						<div class="hestia-wizard__content">
 							<div class="hestia-wizard__body process-step">
@@ -148,14 +149,14 @@ $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 														<div class="hestia-checkbox">
 															<input type="checkbox" name="wizard[install_plugin][]" value="optimole-wp" class="hestia-checkbox-btn" checked>
 														</div>
-														<button type="button" class="hestia-accordion-item__button">
+														<button type="button" class="hestia-accordion-item__button" aria-controls="hestia-accordion-content-optimole" aria-expanded="false">
 															<div class="hestia-accordion__step-title h4 pb-4"><?php esc_html_e( 'Enable performance features for your website', 'hestia' ); ?></div>
 															<p class="help-text"><?php esc_html_e( 'Optimise and speed up your site with our trusted add on - It’s Free', 'hestia' ); ?></p>
 															<div class="hestia-accordion__icon"><span class="dashicons dashicons-arrow-down-alt2"></span>
 															</div>
 														</button>
 													</div>
-													<div class="hestia-accordion-item__content">
+													<div class="hestia-accordion-item__content" id="hestia-accordion-content-optimole">
 														<div class="hestia-features-list">
 															<ul>
 																<li>
@@ -165,6 +166,52 @@ $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 																	<div class="txt">
 																		<div class="h4 pb-4"><?php esc_html_e( 'Boost your website speed', 'hestia' ); ?></div>
 																		<p class="help-text"><?php esc_html_e( 'Improve your website speed and images by 80% with', 'hestia' ); ?> <a href="https://wordpress.org/plugins/optimole-wp/" target="_blank">Optimole</a></p>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											<?php endif; ?>
+											<?php if ( ! $wp_hyve_installed ) : ?>
+												<div class="hestia-accordion-item hestia-features-accordion mb-0">
+													<div class="hestia-accordion-item__title hestia-accordion-checkbox__title">
+														<div class="hestia-checkbox">
+															<input type="checkbox" name="wizard[install_plugin][]" value="hyve-lite" class="hestia-checkbox-btn" checked>
+														</div>
+														<button type="button" class="hestia-accordion-item__button" aria-controls="hestia-accordion-content-hyve" aria-expanded="false">
+															<div class="hestia-accordion__step-title h4 pb-4"><?php esc_html_e( 'Answer Visitor Questions with AI', 'hestia' ); ?></div>
+															<p class="help-text"><?php esc_html_e( 'Help visitors find answers instantly with a free AI chatbot trained on your site.', 'hestia' ); ?></p>
+															<div class="hestia-accordion__icon"><span class="dashicons dashicons-arrow-down-alt2"></span>
+															</div>
+														</button>
+													</div>
+													<div class="hestia-accordion-item__content" id="hestia-accordion-content-hyve">
+														<div class="hestia-features-list">
+															<ul>
+																<li>
+																	<div class="icon">
+																		<img src="https://ps.w.org/hyve-lite/assets/icon-256x256.png?rev=3149624" alt="">
+																	</div>
+																	<div class="txt">
+																		<div class="h4 pb-4"><?php esc_html_e( 'Powered by Hyve AI', 'hestia' ); ?></div>
+																		<p class="help-text">
+																		<?php
+																			printf(
+																				wp_kses( /* translators: %1$s: opening link tag, %2$s: closing link tag */
+																					__( 'Turn your website content into instant, accurate answers for your visitors with %1$sHyve%2$s.', 'hestia' ),
+																					array(
+																						'a' => array(
+																							'href' => array(),
+																							'target' => array(),
+																						),
+																					)
+																				),
+																				'<a href="https://wordpress.org/plugins/hyve-lite/" target="_blank">',
+																				'</a>'
+																			);
+																		?>
+																		</p>
 																	</div>
 																</li>
 															</ul>
@@ -189,14 +236,14 @@ $wp_otter_blocks_active = is_plugin_active( 'otter-blocks/otter-blocks.php' );
 															?>
 															<input type="checkbox" class="hestia-checkbox-btn" name="wizard[install_plugin][]" value="<?php echo esc_attr( join( '|', $plugins ) ); ?>" checked>
 														</div>
-														<button type="button" class="hestia-accordion-item__button">
+														<button type="button" class="hestia-accordion-item__button" aria-controls="hestia-accordion-content-companion" aria-expanded="false">
 															<div class="hestia-accordion__step-title h4 pb-4"><?php esc_html_e( 'Add more options available for Hestia Theme', 'hestia' ); ?></div>
 															<p class="help-text"><?php esc_html_e( 'Take full advantage of the options this theme has to offer - It’s Free', 'hestia' ); ?></p>
 															<div class="hestia-accordion__icon"><span class="dashicons dashicons-arrow-down-alt2"></span>
 															</div>
 														</button>
 													</div>
-													<div class="hestia-accordion-item__content">
+													<div class="hestia-accordion-item__content" id="hestia-accordion-content-companion">
 														<div class="hestia-features-list">
 															<ul>
 																<?php if ( ! $wp_orbit_fox_active ) : ?>

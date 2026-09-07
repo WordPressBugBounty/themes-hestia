@@ -313,7 +313,51 @@ function hestia_woocommerce_template_loop_product_title() {
  * Move the coupon fild and message info after the order table
  **/
 function hestia_coupon_after_order_table_js() {
-	wc_enqueue_js( '$( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#hestia-checkout-coupon" );' );
+	$handle = 'hestia_scripts';
+	$code   = hestia_get_coupon_after_order_table_js();
+
+	/*
+	 * wp_add_inline_script() landed in WP 4.5, and WP_Scripts::do_item() only
+	 * prints the inline tag of a handle that has no src from 4.8 on, so hang the
+	 * code on the theme's own footer script instead of on an empty handle.
+	 */
+	$can_inline = function_exists( 'wp_add_inline_script' )
+		&& wp_script_is( $handle, 'registered' )
+		&& ! wp_script_is( $handle, 'done' );
+
+	if ( ! $can_inline ) {
+		add_action( 'wp_footer', 'hestia_print_coupon_after_order_table_js', 30 );
+		return;
+	}
+
+	// The hook can fire more than once on a page; queue the snippet only once.
+	$queued = (array) wp_scripts()->get_data( $handle, 'after' );
+	if ( in_array( $code, $queued, true ) ) {
+		return;
+	}
+
+	wp_enqueue_script( $handle );
+	wp_add_inline_script( $handle, $code );
+}
+
+/**
+ * Checkout page
+ * The script that moves the coupon field and message info after the order table.
+ *
+ * @return string
+ */
+function hestia_get_coupon_after_order_table_js() {
+	return 'jQuery( function( $ ) { $( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#hestia-checkout-coupon" ); } );';
+}
+
+/**
+ * Checkout page
+ * Footer fallback for when the inline script cannot be attached to a handle.
+ *
+ * @return void
+ */
+function hestia_print_coupon_after_order_table_js() {
+	echo '<script type="text/javascript">' . hestia_get_coupon_after_order_table_js() . '</script>';
 }
 
 /**

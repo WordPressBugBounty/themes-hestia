@@ -3,7 +3,7 @@
 **Tags:** blog, custom-logo, portfolio, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, editor-style, footer-widgets, left-sidebar, right-sidebar, wide-blocks  
 **Requires at least:** 4.0  
 **Tested up to:** 5.8.2  
-**Stable tag:** 3.3.5  
+**Stable tag:** 3.3.6  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,6 +17,22 @@ Hestia WordPress theme, Copyright 2018 Themeisle.
 Hestia is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 3.3.6](https://github.com/Codeinwp/hestia-pro/compare/v3.3.5...v3.3.6) (2026-09-07)
+
+- Improved the accessibility of the setup wizards plugin recommendation accordions for screen reader users.
+- Fixed the sticky navigation bar overlapping the WordPress admin bar on small screens.
+- Fixed a crash when changing the footer layout in the Customizer.
+- Improved stability by preventing fatal errors when a theme class file is missing or unreadable.
+- Fixed front-page repeater fields being uneditable in the mobile Customizer while preserving drag-to-reorder from item headers.
+- Fixed frontend errors when White Label files are missing.
+- Fixed checkout pages showing a WooCommerce deprecation notice.
+- Fixed the missing disclosure marker in Details blocks on the frontend.
+- Fixed WooCommerce pages failing when a product page file is unavailable.
+- Updated dependencies
+
+
+
 
 ##### [Version 3.3.5](https://github.com/Codeinwp/hestia-pro/compare/v3.3.4...v3.3.5) (2026-07-28)
 
