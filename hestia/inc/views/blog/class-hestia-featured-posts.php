@@ -93,7 +93,7 @@ class Hestia_Featured_Posts extends Hestia_Abstract_Main {
 		while ( $post->have_posts() ) {
 			$post->the_post();
 
-			$item_index ++;
+			++$item_index;
 
 			/**
 			 * Based on the post index, decide if the post should display full width or just 50% of the page. If it's
@@ -214,7 +214,7 @@ class Hestia_Featured_Posts extends Hestia_Abstract_Main {
 
 		if ( wp_script_is( 'hestia-infinit-scroll' ) && $wp_query->posts ) {
 			$posts_id_to_skip       = array_map(
-				function( $p ) {
+				function ( $p ) {
 					return $p->ID;
 				},
 				$wp_query->posts

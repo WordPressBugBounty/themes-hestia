@@ -474,5 +474,4 @@ class Hestia_Typography_Controls extends Hestia_Register_Customizer_Controls {
 			)
 		);
 	}
-
 }

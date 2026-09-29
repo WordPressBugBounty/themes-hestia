@@ -99,7 +99,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 	 * @access private
 	 * @since  1.1.51
 	 */
-	public final function import() {
+	final public function import() {
 		if ( ! in_array(
 			$this->previous_theme,
 			array(
@@ -164,7 +164,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 		$this->import_zerif_packages();
 
 		// Import portfolios
-		require_once( HESTIA_PHP_INCLUDE . 'content-import/class-hestia-import-utilities.php' );
+		require_once HESTIA_PHP_INCLUDE . 'content-import/class-hestia-import-utilities.php';
 		$utilities = new Hestia_Import_Utilities();
 
 		if ( empty( $this->previous_theme_content['zerif_portofolio_show'] ) || (bool) $this->previous_theme_content['zerif_portofolio_show'] === false ) {
@@ -192,7 +192,6 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 
 		// Import menus
 		$this->import_menus();
-
 	}
 
 	/**
@@ -231,7 +230,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 
 		/* Right content */
 		$right_content = '';
-		for ( $i = 1; $i <= 4; $i ++ ) {
+		for ( $i = 1; $i <= 4; $i++ ) {
 			$knob_title      = ! empty( $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_title' ] ) ? $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_title' ] : '';
 			$knob_text       = ! empty( $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_text' ] ) ? $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_text' ] : '';
 			$knob_percentage = ! empty( $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_nr' ] ) ? $this->previous_theme_content[ 'zerif_aboutus_feature' . $i . '_nr' ] : '';
@@ -267,7 +266,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 		$content          = array( $left_content, $center_content, $right_content );
 		$not_empty_colums = count( array_filter( $content ) );
 		if ( ! function_exists( 'wp_update_custom_css_post' ) ) {
-			$not_empty_colums --;
+			--$not_empty_colums;
 		}
 		if ( $not_empty_colums <= 0 ) {
 			return;
@@ -435,7 +434,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 			'subscribe'    => 'sidebar-widgets-subscribe-widgets',
 			'latest_news'  => 'hestia_blog',
 		);
-		for ( $i = 1; $i <= 13; $i ++ ) {
+		for ( $i = 1; $i <= 13; $i++ ) {
 			if ( ! empty( $this->previous_theme_content[ 'section' . $i ] ) ) {
 				if ( array_key_exists( $this->previous_theme_content[ 'section' . $i ], $section_mapping ) ) {
 					$hestia_section                  = $section_mapping[ $this->previous_theme_content[ 'section' . $i ] ];
@@ -474,7 +473,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 	 * @access private
 	 * @since  1.1.51
 	 */
-	private final function set_hestia_mod( $hestia_mod_id, $imported_mod_id ) {
+	final private function set_hestia_mod( $hestia_mod_id, $imported_mod_id ) {
 		$hestia_mod = get_theme_mod( $hestia_mod_id );
 		if ( array_key_exists( $imported_mod_id, $this->previous_theme_content ) ) {
 			$imported_mod = $this->previous_theme_content[ $imported_mod_id ];
@@ -495,7 +494,6 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 		if ( ! empty( $zerif_parallax_use ) && ( (bool) $zerif_parallax_use === true ) ) {
 			set_theme_mod( 'hestia_slider_type', 'parallax' );
 		}
-
 	}
 
 	/**
@@ -543,7 +541,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 
 		if ( ! empty( $background_settings ) && $background_settings === 'zerif-background-slider' ) {
 			$settings = array();
-			for ( $i = 1; $i <= 3; $i ++ ) {
+			for ( $i = 1; $i <= 3; $i++ ) {
 				if ( array_key_exists( 'zerif_bgslider_' . $i, $this->previous_theme_content ) ) {
 					$bg = $this->previous_theme_content[ 'zerif_bgslider_' . $i ];
 					if ( ! empty( $bg ) ) {
@@ -811,7 +809,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 				$short_id_transient = explode( '-', $widget_id );
 				$short_id           = end( $short_id_transient );
 				array_push( $ids_to_grab, $short_id );
-				$items --;
+				--$items;
 			}
 		}
 
@@ -886,7 +884,7 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 		 * it and to add \n character to tell the control in hestia that it's a new item.
 		 */
 		$features = '';
-		for ( $i = 1; $i <= 10; $i ++ ) {
+		for ( $i = 1; $i <= 10; $i++ ) {
 			if ( ! empty( $content[ 'item' . $i ] ) ) {
 				$features .= $content[ 'item' . $i ] . '\n';
 			}
@@ -1027,5 +1025,4 @@ class Hestia_Import_Zerif extends Hestia_Import_Utilities {
 		}
 		set_theme_mod( 'nav_menu_locations', $theme_navs );
 	}
-
 }

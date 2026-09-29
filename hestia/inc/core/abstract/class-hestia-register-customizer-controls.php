@@ -210,7 +210,6 @@ abstract class Hestia_Register_Customizer_Controls extends Hestia_Abstract_Main 
 	 */
 	public function add_panel( Hestia_Customizer_Panel $panel ) {
 		array_push( $this->panels_to_register, $panel );
-
 	}
 
 	/**

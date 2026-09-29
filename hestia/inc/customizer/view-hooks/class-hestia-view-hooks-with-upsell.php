@@ -36,7 +36,7 @@ class Hestia_View_Hooks_With_Upsell {
 	 *
 	 * @param array $wp_admin_bar Admin bar menus.
 	 */
-	function admin_bar_menu( $wp_admin_bar = array() ) {
+	public function admin_bar_menu( $wp_admin_bar = array() ) {
 		if ( is_admin() ) {
 			return;
 		}
@@ -285,6 +285,4 @@ class Hestia_View_Hooks_With_Upsell {
 		echo esc_attr( hestia_minimize_css( $css ) );
 		echo '</style>';
 	}
-
-
 }

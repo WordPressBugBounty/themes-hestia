@@ -66,7 +66,7 @@ class Hestia_Contact_Section extends Hestia_Abstract_Main {
 	 * @since Hestia 1.0
 	 * @modified 1.1.51
 	 */
-	function render_section( $is_shortcode = false ) {
+	public function render_section( $is_shortcode = false ) {
 
 		/**
 		 * Don't show section if Disable section is checked.
@@ -225,6 +225,4 @@ class Hestia_Contact_Section extends Hestia_Abstract_Main {
 
 		echo do_shortcode( wp_kses_post( $contact_form_shortcode ) );
 	}
-
-
 }

@@ -31,17 +31,35 @@ class Hestia_Autoloader {
 	private $classes_to_load = array();
 
 	/**
+	 * Pro-only directory, stripped from the free build.
+	 *
+	 * @var string
+	 */
+	private $addons_dir;
+
+	/**
+	 * Whether the Pro-only directory exists, resolved on first lookup.
+	 *
+	 * @var bool|null
+	 */
+	private $addons_available = null;
+
+	/**
 	 * Hestia_Autoloader constructor.
 	 *
 	 * Define the file paths.
 	 */
 	public function __construct() {
+		$this->addons_dir      = HESTIA_PHP_INCLUDE . 'addons';
 		$this->classes_to_load = array(
 			'Hestia_Core'                                 => HESTIA_CORE_DIR,
 			'Hestia_Admin'                                => HESTIA_CORE_DIR,
 			'Hestia_Public'                               => HESTIA_CORE_DIR,
 			'Hestia_Feature_Factory'                      => HESTIA_CORE_DIR,
 			'Hestia_Abstract_Main'                        => HESTIA_CORE_DIR . 'abstract',
+			'Hestia_Abilities'                            => HESTIA_PHP_INCLUDE . 'abilities',
+			'Hestia_Abilities_Page_Layout'                => HESTIA_PHP_INCLUDE . 'abilities',
+			'Hestia_Abilities_Front_Page'                 => HESTIA_PHP_INCLUDE . 'abilities',
 			'Hestia_Abstract_Module'                      => HESTIA_CORE_DIR . 'abstract',
 			'Hestia_Register_Customizer_Controls'         => HESTIA_CORE_DIR . 'abstract',
 			'Hestia_Front_Page_Section_Controls_Abstract' => HESTIA_CORE_DIR . 'abstract',
@@ -180,6 +198,8 @@ class Hestia_Autoloader {
 
 			'Hestia_Custom_Layouts_Module'                => HESTIA_PHP_INCLUDE . 'addons/modules/custom_layouts',
 
+			'Hestia_Abilities_Custom_Layouts'             => HESTIA_PHP_INCLUDE . 'addons/modules/abilities',
+
 			'Hestia_Translations_Manager'                 => HESTIA_PHP_INCLUDE . 'addons/plugin-compatibility',
 			'Hestia_Elementor_Compatibility_Addon'        => HESTIA_PHP_INCLUDE . 'addons/plugin-compatibility',
 
@@ -231,10 +251,36 @@ class Hestia_Autoloader {
 			return false;
 		}
 
+		$class_dir = trailingslashit( $this->classes_to_load[ $class_name ] );
+
+		// Pro-only class in the free build, nothing to load or log.
+		if ( $this->is_stripped_addon( $class_dir ) ) {
+			return false;
+		}
+
 		$filename  = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
-		$full_path = trailingslashit( $this->classes_to_load[ $class_name ] ) . $filename;
+		$full_path = $class_dir . $filename;
 
 		return self::load_class_file( $class_name, $full_path );
+	}
+
+	/**
+	 * Check whether a class directory belongs to the Pro-only add-ons that the free build leaves out.
+	 *
+	 * @param   string $class_dir Mapped class directory, with a trailing slash.
+	 *
+	 * @return  bool
+	 */
+	private function is_stripped_addon( $class_dir ) {
+		if ( 0 !== strpos( $class_dir, trailingslashit( $this->addons_dir ) ) ) {
+			return false;
+		}
+
+		if ( null === $this->addons_available ) {
+			$this->addons_available = is_dir( $this->addons_dir );
+		}
+
+		return ! $this->addons_available;
 	}
 
 	/**

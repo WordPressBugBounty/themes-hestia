@@ -61,7 +61,7 @@ class Hestia_Subscribe_Info extends WP_Customize_Control {
 	 */
 	private function check_plugin_state() {
 		if ( is_file( ABSPATH . 'wp-content/plugins/' . $this->path ) ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 			if ( is_plugin_active( $this->path ) ) {
 				return $this->check_activation();
 			}

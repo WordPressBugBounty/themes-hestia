@@ -41,7 +41,7 @@ class Hestia_Subscribe_Section extends Hestia_Abstract_Main {
 	 *
 	 * @param bool $is_shortcode flag used if section is called via a shortcode.
 	 */
-	function render_section( $is_shortcode = false ) {
+	public function render_section( $is_shortcode = false ) {
 
 		/**
 		 * Don't show section if Disable section is checked.
@@ -132,5 +132,4 @@ class Hestia_Subscribe_Section extends Hestia_Abstract_Main {
 		<?php
 		hestia_after_subscribe_section_trigger();
 	}
-
 }

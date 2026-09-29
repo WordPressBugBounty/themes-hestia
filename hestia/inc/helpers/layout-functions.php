@@ -39,20 +39,25 @@ if ( ! function_exists( 'hestia_wp_link_pages' ) ) {
 				for ( $i = 1; $i < ( $numpages + 1 ); $i = $i + 1 ) {
 					$j = str_replace( '%', $i, $r['pagelink'] );
 
-					$output .= ' ';
-					$output .= $r['link_before'];
+					$link = $r['link_before'];
 					if ( $i !== (int) $page || ( ( ! $more ) && ( (int) $page === 1 ) ) ) {
-						$output .= _wp_link_page( $i );
+						$link .= _wp_link_page( $i );
 					} else {
-						$output .= '<span class="page-numbers current">';
+						$link .= '<span class="page-numbers current">';
 					}
-					$output .= $j;
+
+					$link .= $j;
+
 					if ( $i !== (int) $page || ( ( ! $more ) && ( (int) $page === 1 ) ) ) {
-						$output .= '</a>';
+						$link .= '</a>';
 					} else {
-						$output .= '</span>';
+						$link .= '</span>';
 					}
-					$output .= $r['link_after'];
+					$link .= $r['link_after'];
+
+					$link = apply_filters( 'wp_link_pages_link', $link, $i );
+
+					$output .= ' ' . $link;
 				}
 				$output .= $r['after'];
 			} else {
@@ -61,13 +66,15 @@ if ( ! function_exists( 'hestia_wp_link_pages' ) ) {
 
 					$i = $page - 1;
 					if ( $i && $more ) {
-						$output .= _wp_link_page( $i );
-						$output .= $r['link_before'] . $r['previouspagelink'] . $r['link_after'] . '</a>';
+						$link = _wp_link_page( $i ) . $r['link_before'] . $r['previouspagelink'] . $r['link_after'] . '</a>';
+
+						$output .= apply_filters( 'wp_link_pages_link', $link, $i );
 					}
 					$i = $page + 1;
 					if ( $i <= $numpages && $more ) {
-						$output .= _wp_link_page( $i );
-						$output .= $r['link_before'] . $r['nextpagelink'] . $r['link_after'] . '</a>';
+						$link = _wp_link_page( $i ) . $r['link_before'] . $r['nextpagelink'] . $r['link_after'] . '</a>';
+
+						$output .= apply_filters( 'wp_link_pages_link', $link, $i );
 					}
 					$output .= $r['after'];
 				}
@@ -86,11 +93,16 @@ if ( ! function_exists( 'hestia_wp_link_pages' ) ) {
 						'class' => array(),
 					),
 					'a'    => array(
-						'href' => array(),
+						'href'         => array(),
+						'class'        => array(),
+						'rel'          => array(),
+						'title'        => array(),
+						'aria-current' => array(),
 					),
 					'li'   => array(),
 					'span' => array(
-						'class' => array(),
+						'class'        => array(),
+						'aria-current' => array(),
 					),
 				)
 			);
@@ -661,7 +673,7 @@ if ( ! function_exists( 'hestia_limit_content' ) ) {
 					}
 				}
 			}
-			$index ++;
+			++$index;
 		}
 		if ( $show_more === true ) {
 			$result .= $more;
@@ -910,7 +922,6 @@ function hestia_featured_posts_enabled() {
 	}
 
 	return $featured_posts_category;
-
 }
 
 if ( ! function_exists( 'hestia_get_blog_layout_default' ) ) {
@@ -1941,7 +1952,7 @@ if ( ! function_exists( 'hestia_esc_attr' ) ) {
 			$attributes = array_filter( $attributes );
 			$attributes = is_array( $attributes ) ? $attributes : array();
 			$attributes = array_map(
-				function( $attr ) {
+				function ( $attr ) {
 					$attr = explode( '=', $attr );
 					if ( empty( $attr ) ) {
 						return '';

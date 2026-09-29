@@ -102,5 +102,4 @@ class Hestia_Wp_Forms extends Hestia_Abstract_Main {
 		// Set an option to make sure it does not run again.
 		update_option( 'hestia_wpforms_default_menu', true );
 	}
-
 }

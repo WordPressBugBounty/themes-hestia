@@ -109,6 +109,7 @@ class Hestia_Core {
 				'sync-about',
 				'woocommerce-manager',
 				'setup-wizard',
+				'abilities',
 			)
 		);
 

@@ -659,7 +659,7 @@ class Hestia_Admin {
 	/**
 	 * If conditions are fulfilled this will add the front-page import logic.
 	 */
-	function add_zerif_frontpage_import() {
+	public function add_zerif_frontpage_import() {
 		$imported_flag = get_theme_mod( 'zerif_frontpage_was_imported', 'not-zerif' );
 		if ( $imported_flag === 'yes' || $imported_flag === 'not-zerif' ) {
 			return;
@@ -795,7 +795,7 @@ class Hestia_Admin {
 		if ( class_exists( 'Ti_White_Label_Markup' ) && Ti_White_Label_Markup::is_theme_whitelabeld() ) {
 			add_filter(
 				'themeisle_sdk_blackfriday_data',
-				function( $configs ) {
+				function ( $configs ) {
 					return array();
 				},
 				1000
@@ -813,6 +813,7 @@ class Hestia_Admin {
 
 		if ( 'toplevel_page_' . $this->theme_slug . '-welcome' === $screen->id ) {
 			( new Hestia_Dashboard() )->load_page_deps();
+			do_action( 'themeisle_internal_page', HESTIA_PRODUCT_SLUG, 'dashboard' );
 		}
 
 		if ( ! in_array(

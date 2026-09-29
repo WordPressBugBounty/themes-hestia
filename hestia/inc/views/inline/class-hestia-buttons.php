@@ -187,5 +187,4 @@ class Hestia_Buttons extends Hestia_Abstract_Main {
 
 		return $custom_css;
 	}
-
 }

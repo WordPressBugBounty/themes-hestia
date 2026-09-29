@@ -404,5 +404,4 @@ class Hestia_Additional_Views extends Hestia_Abstract_Main {
 		}
 		echo '</div>';
 	}
-
 }

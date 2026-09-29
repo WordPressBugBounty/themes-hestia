@@ -218,7 +218,6 @@ class Hestia_Slider_Controls extends Hestia_Big_Title_Controls {
 
 			)
 		);
-
 	}
 
 	/**

@@ -101,7 +101,7 @@ class Hestia_Customizer_Page_Editor_Helper extends Hestia_Abstract_Main {
 		}
 		if ( intval( $post_id ) === intval( $frontpage_id ) ) {
 			update_option( 'hestia_sync_needed', 'sync_customizer' );
-		};
+		}
 	}
 
 	/**
@@ -111,7 +111,7 @@ class Hestia_Customizer_Page_Editor_Helper extends Hestia_Abstract_Main {
 	 * @deprecated 2.0.9
 	 * @since 1.1.60
 	 */
-	function trigger_sync_from_customizer() {
+	public function trigger_sync_from_customizer() {
 		$frontpage_id = get_option( 'page_on_front' );
 		if ( ! empty( $frontpage_id ) ) {
 			update_option( 'hestia_sync_needed', 'sync_page' );
@@ -125,7 +125,7 @@ class Hestia_Customizer_Page_Editor_Helper extends Hestia_Abstract_Main {
 	 * @deprecated 2.0.9
 	 * @since 1.1.60
 	 */
-	function sync_controls() {
+	public function sync_controls() {
 		$should_sync = get_option( 'hestia_sync_needed' );
 		if ( $should_sync === false ) {
 			return;

@@ -6,7 +6,7 @@
  * @since   Hestia 1.0
  */
 
-define( 'HESTIA_VERSION', '3.3.6' );
+define( 'HESTIA_VERSION', '3.3.7' );
 define( 'HESTIA_VENDOR_VERSION', '1.0.2' );
 define( 'HESTIA_PHP_INCLUDE', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'HESTIA_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
@@ -18,22 +18,22 @@ if ( ! defined( 'HESTIA_DEBUG' ) ) {
 }
 
 // Load hooks
-require_once( HESTIA_PHP_INCLUDE . 'hooks/hooks.php' );
+require_once HESTIA_PHP_INCLUDE . 'hooks/hooks.php';
 
 // Load Helper Globally Scoped Functions
-require_once( HESTIA_PHP_INCLUDE . 'helpers/sanitize-functions.php' );
-require_once( HESTIA_PHP_INCLUDE . 'helpers/layout-functions.php' );
+require_once HESTIA_PHP_INCLUDE . 'helpers/sanitize-functions.php';
+require_once HESTIA_PHP_INCLUDE . 'helpers/layout-functions.php';
 
 if ( class_exists( 'WooCommerce', false ) ) {
-	require_once( HESTIA_PHP_INCLUDE . 'compatibility/woocommerce/functions.php' );
+	require_once HESTIA_PHP_INCLUDE . 'compatibility/woocommerce/functions.php';
 }
 
 if ( function_exists( 'max_mega_menu_is_enabled' ) ) {
-	require_once( HESTIA_PHP_INCLUDE . 'compatibility/max-mega-menu/functions.php' );
+	require_once HESTIA_PHP_INCLUDE . 'compatibility/max-mega-menu/functions.php';
 }
 
 // Load starter content
-require_once( HESTIA_PHP_INCLUDE . 'compatibility/class-hestia-starter-content.php' );
+require_once HESTIA_PHP_INCLUDE . 'compatibility/class-hestia-starter-content.php';
 
 
 /**
@@ -141,7 +141,7 @@ function hestia_load_sdk( $products ) {
 	return $products;
 }
 
-require_once( HESTIA_CORE_DIR . 'class-hestia-autoloader.php' );
+require_once HESTIA_CORE_DIR . 'class-hestia-autoloader.php';
 
 /**
  * The start of the app.

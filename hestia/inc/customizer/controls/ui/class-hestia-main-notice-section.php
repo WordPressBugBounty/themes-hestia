@@ -87,7 +87,6 @@ class Hestia_Main_Notice_Section extends Hestia_Generic_Notice_Section {
 		$json['options']               = $this->options;
 
 		return $json;
-
 	}
 
 	/**

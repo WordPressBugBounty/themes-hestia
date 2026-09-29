@@ -47,7 +47,6 @@ class Hestia_General_Controls extends Hestia_Register_Customizer_Controls {
 				)
 			)
 		);
-
 	}
 
 	/**

@@ -32,7 +32,7 @@ class Hestia_Feature_Factory {
 
 		$class = 'Hestia_' . $feature_name;
 		if ( class_exists( $class ) ) {
-			return new $class;
+			return new $class();
 		}
 		return null;
 	}

@@ -56,7 +56,7 @@ class Hestia_Infinite_Scroll extends Hestia_Abstract_Main {
 		global $wp_query;
 		$max_pages        = $wp_query->max_num_pages;
 		$posts_id_to_skip = array_map(
-			function( $p ) {
+			function ( $p ) {
 				return $p->ID;
 			},
 			$wp_query->posts
@@ -104,7 +104,7 @@ class Hestia_Infinite_Scroll extends Hestia_Abstract_Main {
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				$counter ++;
+				++$counter;
 				if ( $alternative_blog_layout === 'blog_alternative_layout2' ) {
 					get_template_part( 'template-parts/content', 'alternative-2' );
 				} elseif ( ( $alternative_blog_layout === 'blog_alternative_layout' ) && ( $counter % 2 === 0 ) ) {
@@ -117,5 +117,4 @@ class Hestia_Infinite_Scroll extends Hestia_Abstract_Main {
 		}
 		wp_die();
 	}
-
 }

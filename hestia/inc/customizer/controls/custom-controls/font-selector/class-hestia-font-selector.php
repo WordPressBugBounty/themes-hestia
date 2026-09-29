@@ -89,7 +89,7 @@ class Hestia_Font_Selector extends WP_Customize_Control {
 	 *
 	 * @since 1.1.38
 	 */
-	function get_standard_fonts() {
+	public function get_standard_fonts() {
 		return apply_filters(
 			'hestia_standard_fonts_array',
 			array(
@@ -115,5 +115,4 @@ class Hestia_Font_Selector extends WP_Customize_Control {
 			)
 		);
 	}
-
 }

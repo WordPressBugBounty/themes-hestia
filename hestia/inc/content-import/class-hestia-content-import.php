@@ -98,7 +98,6 @@ final class Hestia_Content_Import {
 
 		// Get the theme mods from the previous theme.
 		$this->previous_theme_content = get_option( 'theme_mods_' . $this->previous_theme );
-
 	}
 
 	/**
@@ -107,7 +106,7 @@ final class Hestia_Content_Import {
 	 * @access private
 	 * @since  1.1.49
 	 */
-	public final function import() {
+	final public function import() {
 
 		if ( ! in_array( $this->previous_theme, array( 'azera-shop', 'parallax-one', 'llorix-one-lite' ), true ) ) {
 			return;
@@ -123,7 +122,6 @@ final class Hestia_Content_Import {
 
 		// Import content.
 		$this->import_content();
-
 	}
 
 	/**
@@ -134,14 +132,13 @@ final class Hestia_Content_Import {
 	 * @access private
 	 * @since  1.1.49
 	 */
-	private final function prefix_theme_mods( $mods ) {
+	final private function prefix_theme_mods( $mods ) {
 		$prefix = str_replace( '-', '_', $this->previous_theme ) . '_';
 		if ( ! empty( $mods ) ) {
 			foreach ( $mods as $hestia_mod => $previous_mod_unprefixed ) {
 				$this->simple_theme_mods[ $hestia_mod ] = $prefix . $previous_mod_unprefixed;
 			}
 		}
-
 	}
 
 	/**
@@ -152,7 +149,7 @@ final class Hestia_Content_Import {
 	 * @access private
 	 * @since  1.1.49
 	 */
-	private final function add_exceptions() {
+	final private function add_exceptions() {
 		// Add exceptions and bail if there's another theme than these three.
 		switch ( $this->previous_theme ) {
 			case 'azera-shop':
@@ -203,7 +200,7 @@ final class Hestia_Content_Import {
 	 */
 	private function import_content() {
 
-		require_once( HESTIA_PHP_INCLUDE . 'content-import/class-hestia-import-utilities.php' );
+		require_once HESTIA_PHP_INCLUDE . 'content-import/class-hestia-import-utilities.php';
 		$utilities = new Hestia_Import_Utilities();
 
 		$prefix = str_replace( '-', '_', $this->previous_theme ) . '_';
@@ -278,15 +275,15 @@ final class Hestia_Content_Import {
 		$settings = array();
 		if ( ! empty( $this->previous_theme_content[ $prefix . 'our_story_title' ] ) ) {
 			$settings['title'] = $this->previous_theme_content[ $prefix . 'our_story_title' ];
-		};
+		}
 
 		if ( ! empty( $this->previous_theme_content[ $prefix . 'our_story_text' ] ) ) {
 			$settings['text'] = $this->previous_theme_content[ $prefix . 'our_story_text' ];
-		};
+		}
 
 		if ( ! empty( $this->previous_theme_content[ $prefix . 'our_story_image' ] ) ) {
 			$settings['image'] = $this->previous_theme_content[ $prefix . 'our_story_image' ];
-		};
+		}
 		$layout_control = '';
 		switch ( $prefix ) {
 			case 'llorix_one_lite_':
@@ -301,7 +298,7 @@ final class Hestia_Content_Import {
 		}
 		if ( ! empty( $layout_control ) && ! empty( $this->previous_theme_content[ $layout_control ] ) ) {
 			$settings['layout'] = $this->previous_theme_content[ $layout_control ];
-		};
+		}
 		$utilities->about_to_html( $settings );
 
 		/**
@@ -376,7 +373,6 @@ final class Hestia_Content_Import {
 			}
 			$utilities->update_menus( $social_content, $this->previous_theme_content['nav_menu_locations'] );
 		}
-
 	}
 
 	/**
@@ -405,7 +401,7 @@ final class Hestia_Content_Import {
 	 * @access private
 	 * @since  1.1.49
 	 */
-	private final function set_hestia_mod( $hestia_mod_id, $imported_mod_id ) {
+	final private function set_hestia_mod( $hestia_mod_id, $imported_mod_id ) {
 		$hestia_mod = get_theme_mod( $hestia_mod_id );
 		if ( ! empty( $this->previous_theme_content[ $imported_mod_id ] ) ) {
 			$imported_mod = $this->previous_theme_content[ $imported_mod_id ];
@@ -436,7 +432,6 @@ final class Hestia_Content_Import {
 		if ( ! empty( $previous_theme_content['llorix_one_lite_text_color'] ) ) {
 			set_theme_mod( 'secondary_color', $previous_theme_content['llorix_one_lite_text_color'] );
 		}
-
 	}
 
 

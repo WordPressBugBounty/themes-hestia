@@ -122,7 +122,6 @@ class Hestia_Big_Title_Section extends Hestia_First_Front_Page_Section {
 		}
 
 		return $background;
-
 	}
 
 	/**

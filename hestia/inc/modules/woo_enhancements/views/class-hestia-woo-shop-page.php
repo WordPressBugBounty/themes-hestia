@@ -37,7 +37,7 @@ class Hestia_Woo_Shop_Page {
 	/**
 	 * Register WooCommerce hooks.
 	 */
-	function run() {
+	public function run() {
 		if ( ! $this->should_load() ) {
 			return false;
 		}
@@ -114,5 +114,4 @@ class Hestia_Woo_Shop_Page {
 	public function hestia_woocommerce_reposition_right_shop_elements() {
 		woocommerce_catalog_ordering();
 	}
-
 }

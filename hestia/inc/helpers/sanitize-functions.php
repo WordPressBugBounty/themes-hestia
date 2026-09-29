@@ -245,13 +245,13 @@ function hestia_sanitize_multiselect( $value ) {
 /**
  * Check if a string is in json format
  *
- * @param  string $string Input.
+ * @param  string $value Input.
  *
  * @since 1.1.38
  * @return bool
  */
-function hestia_is_json( $string ) {
-	return is_string( $string ) && is_array( json_decode( $string, true ) ) ? true : false;
+function hestia_is_json( $value ) {
+	return is_string( $value ) && is_array( json_decode( $value, true ) ) ? true : false;
 }
 
 /**

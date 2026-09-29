@@ -29,7 +29,7 @@ abstract class Hestia_Abstract_Module {
 	 *
 	 * @return void
 	 */
-	abstract function run_module();
+	abstract public function run_module();
 
 	/**
 	 * Register customizer classes.

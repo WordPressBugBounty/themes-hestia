@@ -1,3 +1,12 @@
+##### [Version 3.3.7](https://github.com/Codeinwp/hestia-pro/compare/v3.3.6...v3.3.7) (2026-09-29)
+
+- Fixed missing logos on inner pages with a transparent header.
+- Fixed mobile menu scrolling when the Sticky Navbar was disabled.
+- Fixed WooCommerce pages that failed when Elementor had no document.
+- Fixed debug logs reporting missing Pro add-ons in the free Hestia theme.
+- Added AI agent support: let AI assistants read and change your Hestia settings. 
+- Updated dependencies
+
 ##### [Version 3.3.6](https://github.com/Codeinwp/hestia-pro/compare/v3.3.5...v3.3.6) (2026-09-07)
 
 - Improved the accessibility of the setup wizards plugin recommendation accordions for screen reader users.

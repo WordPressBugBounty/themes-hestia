@@ -15,7 +15,7 @@ class Hestia_Public {
 	 *
 	 * @var array
 	 */
-	var $generic_strings;
+	public $generic_strings;
 
 	/**
 	 * Enqueue theme scripts.
@@ -105,7 +105,6 @@ class Hestia_Public {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return;
 		}
-
 	}
 
 	/**
@@ -574,7 +573,7 @@ class Hestia_Public {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
 			$woocommerce_notice = HESTIA_PHP_INCLUDE . 'customizer/utils/customizer-info/class/class-hestia-customizer-info-singleton.php';
 			if ( is_file( $woocommerce_notice ) ) {
-				require_once( $woocommerce_notice );
+				require_once $woocommerce_notice;
 			}
 
 			return;
@@ -709,16 +708,16 @@ class Hestia_Public {
 	 * Get switched theme slug or parent theme slug if it's a child theme.
 	 * SDK does not register activation time for child themes.
 	 *
-	 * @param bool $switch Is switch theme flag.
+	 * @param bool $check_switched Is switch theme flag.
 	 *
 	 * @return string
 	 */
-	private function get_theme_slug( $switch = false ) {
+	private function get_theme_slug( $check_switched = false ) {
 		$base_file = get_template_directory() . '/style.css';
 		$dir       = dirname( $base_file );
 		$slug      = basename( $dir );
 
-		if ( $switch !== true ) {
+		if ( $check_switched !== true ) {
 			return $slug;
 		}
 

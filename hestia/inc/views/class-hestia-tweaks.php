@@ -148,7 +148,7 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 	 * Filter to modify input label in repeater control
 	 * You can filter by control id and input name.
 	 *
-	 * @param string $string  Input label.
+	 * @param string $label  Input label.
 	 * @param string $id      Input id.
 	 * @param string $control Control name.
 	 *
@@ -156,7 +156,7 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 	 *
 	 * @return string
 	 */
-	public function slider_repeater_labels( $string, $id, $control ) {
+	public function slider_repeater_labels( $label, $id, $control ) {
 
 		if ( $id === 'hestia_slider_content' ) {
 			if ( $control === 'customizer_repeater_text_control' ) {
@@ -180,7 +180,7 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 			}
 		}
 
-		return $string;
+		return $label;
 	}
 
 
@@ -188,7 +188,7 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 	 * Filter to modify input type in repeater control
 	 * You can filter by control id and input name.
 	 *
-	 * @param string $string Input label.
+	 * @param string $input_type Input label.
 	 * @param string $id Input id.
 	 * @param string $control Control name.
 	 *
@@ -196,7 +196,7 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 	 *
 	 * @return string
 	 */
-	public function repeater_input_types( $string, $id, $control ) {
+	public function repeater_input_types( $input_type, $id, $control ) {
 
 		if ( $id === 'hestia_slider_content' ) {
 			if ( $control === 'customizer_repeater_text_control' ) {
@@ -211,7 +211,6 @@ class Hestia_Tweaks extends Hestia_Abstract_Main {
 			}
 		}
 
-		return $string;
+		return $input_type;
 	}
-
 }

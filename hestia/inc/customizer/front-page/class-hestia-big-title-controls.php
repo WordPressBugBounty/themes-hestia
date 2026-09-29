@@ -22,7 +22,6 @@ class Hestia_Big_Title_Controls extends Hestia_Front_Page_Section_Controls_Abstr
 			'title'    => esc_html__( 'Big Title Section', 'hestia' ),
 			'priority' => 5,
 		);
-
 	}
 
 	/**

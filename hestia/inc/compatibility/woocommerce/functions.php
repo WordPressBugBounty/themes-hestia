@@ -7,7 +7,7 @@
  */
 
 // Get hooks file.
-require_once( 'hooks.php' );
+require_once 'hooks.php';
 
 if ( ! function_exists( 'hestia_add_to_cart' ) ) :
 	/**
@@ -244,7 +244,7 @@ function hestia_woocommerce_template_loop_product_title() {
 						if ( ! empty( $product_cat_id ) && ! empty( $product_cat_name ) ) {
 							echo '<a href="' . esc_url( get_term_link( $product_cat_id, 'product_cat' ) ) . '">' . esc_html( $product_cat_name ) . '</a>';
 						}
-						$index ++;
+						++$index;
 					}
 				}
 				echo '</span>';

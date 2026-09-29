@@ -170,6 +170,5 @@ abstract class Hestia_Front_Page_Section_Controls_Abstract extends Hestia_Regist
 		}
 
 		return 'hestia_' . $this->section_data['slug'];
-
 	}
 }

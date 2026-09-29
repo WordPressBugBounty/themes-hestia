@@ -189,11 +189,10 @@ class Hestia_Blog_Section extends Hestia_Abstract_Main {
 					echo '</div><!-- /.row -->';
 					echo '<div class="row" ' . hestia_add_animationation( 'fade-up' ) . '>';
 				}
-				$i++;
+				++$i;
 			endwhile;
 			echo '</div>';
 
 			wp_reset_postdata();
 	}
-
 }

@@ -25,7 +25,7 @@ abstract class Hestia_Page_Builder_Helper extends Hestia_Abstract_Main {
 	 *
 	 * @return bool
 	 */
-	protected abstract function should_load_feature();
+	abstract protected function should_load_feature();
 
 	/**
 	 * Decide if a page is edited with a page builder or not.
@@ -34,7 +34,7 @@ abstract class Hestia_Page_Builder_Helper extends Hestia_Abstract_Main {
 	 *
 	 * @return bool
 	 */
-	protected abstract function is_edited_with_builder( $pid );
+	abstract protected function is_edited_with_builder( $pid );
 
 
 	/**

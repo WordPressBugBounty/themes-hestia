@@ -56,7 +56,6 @@ class Hestia_Select_Multiple extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'hestia-customizer-select-multiple', get_template_directory_uri() . '/inc/customizer/controls/custom-controls/multi-select/script.js', array( 'jquery', 'customize-base' ), HESTIA_VERSION, true );
-
 	}
 	/**
 	 * Add custom parameters to pass to the JS via JSON.

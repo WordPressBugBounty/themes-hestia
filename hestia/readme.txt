@@ -3,7 +3,7 @@ Contributors: themeisle
 Tags: blog, custom-logo, portfolio, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, editor-style, footer-widgets, left-sidebar, right-sidebar, wide-blocks
 Requires at least: 4.0
 Tested up to: 5.8.2
-Stable tag: 3.3.6
+Stable tag: 3.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,18 @@ Hestia WordPress theme, Copyright 2018 Themeisle.
 Hestia is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+##### [Version 3.3.7](https://github.com/Codeinwp/hestia-pro/compare/v3.3.6...v3.3.7) (2026-09-29)
+
+- Fixed missing logos on inner pages with a transparent header.
+- Fixed mobile menu scrolling when the Sticky Navbar was disabled.
+- Fixed WooCommerce pages that failed when Elementor had no document.
+- Fixed debug logs reporting missing Pro add-ons in the free Hestia theme.
+- Added AI agent support: let AI assistants read and change your Hestia settings. 
+- Updated dependencies
+
+
+
 
 ##### [Version 3.3.6](https://github.com/Codeinwp/hestia-pro/compare/v3.3.5...v3.3.6) (2026-09-07)
 

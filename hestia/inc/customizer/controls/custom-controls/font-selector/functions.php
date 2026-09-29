@@ -5,6 +5,3 @@
  * @package hestia
  * @since 1.1.38
  */
-
-
-

@@ -166,7 +166,7 @@ class Hestia_Customizer_Main extends Hestia_Register_Customizer_Controls {
 	 *
 	 * @return bool
 	 */
-	function hestia_display_frontpage_section() {
+	public function hestia_display_frontpage_section() {
 		if ( ! empty( $_REQUEST['customized'] ) ) {
 			$customized = json_decode( wp_unslash( $_REQUEST['customized'] ), true );
 			if ( is_array( $customized ) && isset( $customized['disable_frontpage_sections'] ) ) {

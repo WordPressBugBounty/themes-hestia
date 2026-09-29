@@ -535,7 +535,6 @@ class Hestia_Header_Layout_Manager extends Hestia_Abstract_Main {
 		$header_filter_div .= '></div>';
 
 		echo apply_filters( 'hestia_header_wrapper_background_filter', $header_filter_div );
-
 	}
 
 
@@ -595,7 +594,6 @@ class Hestia_Header_Layout_Manager extends Hestia_Abstract_Main {
 		}
 
 		return esc_url( get_header_image() );
-
 	}
 
 	/**

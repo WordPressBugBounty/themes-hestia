@@ -22,7 +22,7 @@ class Hestia_Woocommerce_Manager extends Hestia_Abstract_Module {
 	/**
 	 * Run module.
 	 */
-	function run_module() {
+	public function run_module() {
 		$submodules = array(
 			'Hestia_Woo_Shop_Page'    => HESTIA_PHP_INCLUDE . 'modules/woo_enhancements/views/class-hestia-woo-shop-page.php',
 			'Hestia_Woo_Product_Page' => HESTIA_PHP_INCLUDE . 'modules/woo_enhancements/views/class-hestia-woo-product-page.php',
@@ -52,8 +52,12 @@ class Hestia_Woocommerce_Manager extends Hestia_Abstract_Module {
 		}
 
 		$page_id = function_exists( 'get_the_ID' ) ? get_the_ID() : 0;
-		if ( $page_id && \Elementor\Plugin::$instance->documents->get( $page_id )->is_built_with_elementor() ) {
-			return true;
+		if ( $page_id ) {
+			// The lookup returns false when the ID has no post behind it.
+			$document = \Elementor\Plugin::$instance->documents->get( $page_id );
+			if ( is_object( $document ) && $document->is_built_with_elementor() ) {
+				return true;
+			}
 		}
 
 		$conditions_manager = \ElementorPro\Plugin::instance()->modules_manager->get_modules( 'theme-builder' )->get_conditions_manager();

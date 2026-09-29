@@ -84,7 +84,5 @@ class Hestia_Child_Customizer extends Hestia_Register_Customizer_Controls {
 				),
 			)
 		);
-
 	}
-
 }

@@ -123,9 +123,7 @@ class Hestia_Slider_Section extends Hestia_First_Front_Page_Section {
 	 *
 	 * @return string
 	 */
-	private function get_button_style(
-		$color1, $color2, $item_number
-	) {
+	private function get_button_style( $color1, $color2, $item_number ) {
 
 		if ( empty( $color1 ) && empty( $color2 ) ) {
 			return '';

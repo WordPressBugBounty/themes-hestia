@@ -53,9 +53,9 @@ do_action( 'hestia_before_index_wrapper' ); ?>
 						while ( have_posts() ) {
 							the_post();
 							$pid = get_the_ID();
-							$counter ++;
+							++$counter;
 							if ( ! empty( $posts_to_skip ) && in_array( $pid, $posts_to_skip, true ) ) {
-								$counter ++;
+								++$counter;
 								continue;
 							}
 							if ( $alternative_blog_layout === 'blog_alternative_layout2' ) {

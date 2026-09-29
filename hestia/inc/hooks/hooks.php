@@ -115,4 +115,4 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 	}
 }
 
-require_once( 'hooks-front-page.php' );
+require_once 'hooks-front-page.php';

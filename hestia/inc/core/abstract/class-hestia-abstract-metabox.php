@@ -21,17 +21,17 @@ abstract class Hestia_Abstract_Metabox {
 	/**
 	 * Add metabox fuction.
 	 */
-	public abstract function add();
+	abstract public function add();
 
 	/**
 	 * Save metabox function.
 	 */
-	public abstract function save( $post_id );
+	abstract public function save( $post_id );
 
 	/**
 	 * Display metabox function.
 	 */
-	public abstract function html();
+	abstract public function html();
 
 	/**
 	 * Create a control inside the metabox.

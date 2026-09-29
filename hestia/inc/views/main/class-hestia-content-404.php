@@ -62,5 +62,4 @@ class Hestia_Content_404 extends Hestia_Abstract_Main {
 		echo '</div>';
 		do_action( 'hestia_after_archive_content' );
 	}
-
 }

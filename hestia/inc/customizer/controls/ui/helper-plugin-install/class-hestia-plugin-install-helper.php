@@ -25,7 +25,7 @@ class Hestia_Plugin_Install_Helper {
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Hestia_Plugin_Install_Helper ) ) {
-			self::$instance = new Hestia_Plugin_Install_Helper;
+			self::$instance = new Hestia_Plugin_Install_Helper();
 		}
 
 		return self::$instance;

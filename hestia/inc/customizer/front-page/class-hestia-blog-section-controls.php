@@ -79,5 +79,4 @@ class Hestia_Blog_Section_Controls extends Hestia_Front_Page_Section_Controls_Ab
 		$this->change_customizer_object( 'setting', 'hestia_blog_title', 'default', esc_html__( 'Blog', 'hestia' ) );
 		$this->change_customizer_object( 'setting', 'hestia_blog_subtitle', 'default', esc_html__( 'Change this subtitle in the Customizer', 'hestia' ) );
 	}
-
 }

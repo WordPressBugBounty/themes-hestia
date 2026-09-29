@@ -97,7 +97,6 @@ class Hestia_Customize_Control_Radio_Image extends WP_Customize_Control {
 				$this->subcontrols = esc_attr( $args['subcontrols'] );
 			}
 		}
-
 	}
 
 	/**

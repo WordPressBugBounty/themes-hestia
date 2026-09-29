@@ -89,7 +89,6 @@ class Hestia_Control_Upsell extends WP_Customize_Control {
 	 * Render upsell content.
 	 */
 	public function render_content() {
-
 	}
 
 	/**

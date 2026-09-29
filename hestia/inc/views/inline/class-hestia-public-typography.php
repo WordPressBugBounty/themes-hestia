@@ -650,7 +650,6 @@ class Hestia_Public_Typography extends Hestia_Inline_Style_Manager {
 		foreach ( $external_fonts as $font_link ) {
 			wp_add_inline_style( 'hestia_style', wptt_get_webfont_styles( $font_link ) );
 		}
-
 	}
 
 	/**
@@ -707,5 +706,4 @@ class Hestia_Public_Typography extends Hestia_Inline_Style_Manager {
 		}
 		return $base_url;
 	}
-
 }

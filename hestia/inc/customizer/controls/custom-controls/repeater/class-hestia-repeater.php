@@ -177,7 +177,6 @@ class Hestia_Repeater extends WP_Customize_Control {
 		if ( empty( $this->value ) ) {
 			$this->value = $this->get_empty_value();
 		}
-
 	}
 
 	/**
@@ -289,12 +288,12 @@ class Hestia_Repeater extends WP_Customize_Control {
 	/**
 	 * Iterate array
 	 *
-	 * @param array $array Array to iterate.
+	 * @param array $items Array to iterate.
 	 */
-	private function iterate_array( $array = array() ) {
+	private function iterate_array( $items = array() ) {
 		/*Counter that helps checking if the box is first and should have the delete button disabled*/
 		$it = 0;
-		foreach ( $array as $icon ) {
+		foreach ( $items as $icon ) {
 			?>
 			<div class="customizer-repeater-general-control-repeater-container customizer-repeater-draggable">
 				<div class="customizer-repeater-customize-control-title">
@@ -453,7 +452,7 @@ class Hestia_Repeater extends WP_Customize_Control {
 			</div>
 
 			<?php
-			$it++;
+			++$it;
 		}
 	}
 
@@ -514,7 +513,7 @@ class Hestia_Repeater extends WP_Customize_Control {
 
 		add_filter(
 			'hestia_repeater_icons',
-			function( $icons ) use ( $dropdown_icons ) {
+			function ( $icons ) use ( $dropdown_icons ) {
 				if ( ! empty( $dropdown_icons ) ) {
 					return $dropdown_icons;
 				}
@@ -652,7 +651,7 @@ class Hestia_Repeater extends WP_Customize_Control {
 			<div class="customizer-repeater-social-repeater">
 				<?php
 				foreach ( $social_repeater as $social_icon ) {
-					$show_del ++;
+					++$show_del;
 					echo '<div class="customizer-repeater-social-repeater-container">';
 					echo '<div class="customizer-repeater-rc input-group icp-container">';
 					echo '<input data-placement="bottomRight" class="icp icp-auto" value="';
@@ -693,14 +692,14 @@ class Hestia_Repeater extends WP_Customize_Control {
 	 * Extends parse args for nested arrays.
 	 *
 	 * @param array $target  The target array.
-	 * @param array $default The defaults array.
+	 * @param array $defaults The defaults array.
 	 *
 	 * @return array
 	 */
-	private function rec_wp_parse_args( &$target, $default ) {
-		$target  = (array) $target;
-		$default = (array) $default;
-		$result  = $default;
+	private function rec_wp_parse_args( &$target, $defaults ) {
+		$target   = (array) $target;
+		$defaults = (array) $defaults;
+		$result   = $defaults;
 		foreach ( $target as $key => &$value ) {
 			if ( is_array( $value ) && isset( $result[ $key ] ) ) {
 				$result[ $key ] = $this->rec_wp_parse_args( $value, $result[ $key ] );

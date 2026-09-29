@@ -148,7 +148,6 @@ class Hestia_Import_Utilities {
 		if ( ! empty( $result ) ) {
 			set_theme_mod( 'hestia_slider_content', '[' . json_encode( $result ) . ']' );
 		}
-
 	}
 
 	/**
@@ -241,7 +240,6 @@ class Hestia_Import_Utilities {
 				}
 			}
 		}
-
 	}
 
 	/**
@@ -357,7 +355,7 @@ class Hestia_Import_Utilities {
 					$ribbon_html .= '</div>';
 					$ribbon_html .= '<div class="row">';
 				}
-				$i++;
+				++$i;
 			}
 			$ribbon_html .= '</div>';
 		}
@@ -422,7 +420,6 @@ class Hestia_Import_Utilities {
 		}
 
 		update_option( 'should_import_zerif_shortcodes', true );
-
 	}
 
 	/**

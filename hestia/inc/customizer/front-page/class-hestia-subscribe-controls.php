@@ -22,7 +22,6 @@ class Hestia_Subscribe_Controls extends Hestia_Front_Page_Section_Controls_Abstr
 			'priority'         => 55,
 			'initially_hidden' => true,
 		);
-
 	}
 
 	/**

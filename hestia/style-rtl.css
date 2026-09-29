@@ -5725,6 +5725,14 @@ body:not(.home) .wrapper .content-area {
   .navbar.navbar-fixed-top.header-with-topbar:not(.navbar-scroll-point) .navbar-collapse {
     margin-top: 110px;
   }
+  .navbar.navbar-static-top .navbar-collapse {
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: auto;
+  }
+  .navbar.navbar-static-top.header-with-topbar .navbar-collapse {
+    max-height: calc(100vh - 110px);
+  }
   .navbar .navbar-nav {
     margin: 7.5px 0;
   }
@@ -5853,6 +5861,10 @@ body:not(.home) .wrapper .content-area {
     max-height: calc(100% - 115px);
     margin-top: 115px;
   }
+  body.admin-bar .navbar.navbar-static-top .navbar-collapse {
+    max-height: calc(100vh - 115px);
+    margin-top: 0;
+  }
   body.admin-bar .navbar.header-with-topbar {
     margin-top: 0;
     top: 85px;
@@ -5863,6 +5875,10 @@ body:not(.home) .wrapper .content-area {
   }
   body.admin-bar .navbar.header-with-topbar.navbar-fixed-top.navbar-scroll-point .navbar-collapse {
     margin-top: 115px;
+  }
+  body.admin-bar .navbar.header-with-topbar.navbar-static-top .navbar-collapse {
+    max-height: calc(100vh - 155px);
+    margin-top: 0;
   }
   body.admin-bar .navbar.navbar-scroll-point.header-with-topbar {
     top: 45px;

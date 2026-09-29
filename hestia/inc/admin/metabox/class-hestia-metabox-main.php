@@ -226,7 +226,6 @@ class Hestia_Metabox_Main extends Hestia_Metabox_Controls_Base {
 		}
 
 		return true;
-
 	}
 
 	/**

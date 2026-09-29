@@ -43,5 +43,5 @@ if ( ( ! is_page_template() || get_option( 'fresh_site' ) ) && ! get_theme_mod( 
 		get_footer();
 
 } else {
-	include( get_page_template() );
+	include get_page_template();
 } ?>

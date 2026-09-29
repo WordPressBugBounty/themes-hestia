@@ -246,5 +246,4 @@ class Hestia_Customizer_Notices extends Hestia_Register_Customizer_Controls {
 			)
 		);
 	}
-
 }

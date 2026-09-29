@@ -79,7 +79,7 @@ class Hestia_Sync_About extends Hestia_Abstract_Main {
 	 *
 	 * @since 1.1.60
 	 */
-	function trigger_sync_from_customizer() {
+	public function trigger_sync_from_customizer() {
 		$current_thumbnail = get_theme_mod( 'hestia_feature_thumbnail_buffer' );
 		if ( $current_thumbnail === 'image_was_synced' ) {
 			return false;
@@ -110,7 +110,7 @@ class Hestia_Sync_About extends Hestia_Abstract_Main {
 
 		if ( intval( $post_id ) === intval( $frontpage_id ) ) {
 			update_option( 'hestia_sync_needed', 'sync_customizer' );
-		};
+		}
 	}
 
 	/**
@@ -135,7 +135,7 @@ class Hestia_Sync_About extends Hestia_Abstract_Main {
 	 *
 	 * @since 1.1.60
 	 */
-	function sync_controls() {
+	public function sync_controls() {
 		$should_sync = get_option( 'hestia_sync_needed' );
 		if ( $should_sync === false ) {
 			return;

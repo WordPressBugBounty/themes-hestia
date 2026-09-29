@@ -117,12 +117,12 @@ class Hestia_Customizer_Range_Value_Control extends WP_Customize_Control {
 	 *
 	 * @since 1.1.53
 	 *
-	 * @param array $array Array to check.
+	 * @param array $values Array to check.
 	 *
 	 * @return bool
 	 */
-	private function contains_array( $array ) {
-		foreach ( $array as $value ) {
+	private function contains_array( $values ) {
+		foreach ( $values as $value ) {
 			if ( is_array( $value ) ) {
 				return true;
 			}
@@ -134,14 +134,14 @@ class Hestia_Customizer_Range_Value_Control extends WP_Customize_Control {
 	/**
 	 * Check if a string is in json format
 	 *
-	 * @param  string $string Input.
+	 * @param  string $value Input.
 	 *
 	 * @since 1.1.31
 	 * @access public
 	 * @return bool
 	 */
-	public function is_json( $string ) {
-		return is_string( $string ) && is_array( json_decode( $string, true ) ) ? true : false;
+	public function is_json( $value ) {
+		return is_string( $value ) && is_array( json_decode( $value, true ) ) ? true : false;
 	}
 
 	/**

@@ -322,7 +322,7 @@ class Hestia_Dashboard_Render {
 	 * @return array|object|WP_Error
 	 */
 	private function call_plugin_api( $slug ) {
-		include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 
 		$call_api = get_transient( 'ti_about_plugin_info_' . $slug );
 
@@ -394,7 +394,7 @@ class Hestia_Dashboard_Render {
 			echo '<span class="version">' . esc_html( $data['version'] ) . '</span>';
 			echo '<span class="separator"> | </span>';
 		}
-		echo  strtok( strip_tags( $data['author'] ), ',' );
+		echo strtok( strip_tags( $data['author'] ), ',' );
 		echo '</div>';
 		echo '</div>';
 		echo '</div>';
@@ -522,7 +522,6 @@ class Hestia_Dashboard_Render {
 		}
 
 		return $releases;
-
 	}
 
 	/**

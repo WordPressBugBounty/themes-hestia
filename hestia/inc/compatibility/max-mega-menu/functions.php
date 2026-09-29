@@ -71,4 +71,3 @@ function megamenu_add_theme_hestia_max_menu( $themes ) {
 }
 
 add_filter( 'megamenu_themes', 'megamenu_add_theme_hestia_max_menu' );
-

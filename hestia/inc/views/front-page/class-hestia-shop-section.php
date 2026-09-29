@@ -299,7 +299,7 @@ class Hestia_Shop_Section extends Hestia_Abstract_Main {
 						echo '</div><!-- /.row -->';
 						echo '<div class="row">';
 					}
-					$i ++;
+					++$i;
 				}
 				wp_reset_postdata();
 				echo '</div>';

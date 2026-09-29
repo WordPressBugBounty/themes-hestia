@@ -221,6 +221,4 @@ class Hestia_Inline_Style_Manager extends Hestia_Abstract_Main {
 
 		return $custom_css;
 	}
-
-
 }
