@@ -1905,9 +1905,10 @@ function hestia_load_fa() {
 }
 
 /**
- * Trigger fa loading if strings in that array contains font awesome code.
+ * Trigger fa loading if any of the strings contains font awesome code,
+ * including strings held in nested arrays.
  *
- * @param array | string $strings Array of strings.
+ * @param string|array<mixed> $strings A string, or an array of strings and nested arrays of strings.
  *
  * @return bool
  */
@@ -1923,6 +1924,9 @@ function maybe_trigger_fa_loading( $strings ) {
 
 	if ( is_array( $strings ) ) {
 		foreach ( $strings as $string ) {
+			if ( is_array( $string ) && maybe_trigger_fa_loading( $string ) ) {
+				return true;
+			}
 			if ( ! is_string( $string ) ) {
 				continue;
 			}

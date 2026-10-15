@@ -1,3 +1,8 @@
+##### [Version 3.3.8](https://github.com/Codeinwp/hestia-pro/compare/v3.3.7...v3.3.8) (2026-10-15)
+
+- Fixed Font Awesome icons missing from pricing feature lists.
+- Updated dependencies
+
 ##### [Version 3.3.7](https://github.com/Codeinwp/hestia-pro/compare/v3.3.6...v3.3.7) (2026-09-29)
 
 - Fixed missing logos on inner pages with a transparent header.
