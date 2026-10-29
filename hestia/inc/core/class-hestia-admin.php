@@ -862,7 +862,7 @@ class Hestia_Admin {
 		$status  = apply_filters( 'product_hestia_license_status', false );
 
 		$is_pro     = 'valid' === $status;
-		$is_expired = 'expired' === $status || 'active-expired' === $status;
+		$is_expired = in_array( $status, array( 'expired', 'active_expired', 'active-expired' ), true );
 
 		if ( $is_pro ) {
 			// translators: %1$s - discount, %2$s - discount.

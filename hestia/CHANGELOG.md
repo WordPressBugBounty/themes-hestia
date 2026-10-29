@@ -1,3 +1,8 @@
+##### [Version 3.3.9](https://github.com/Codeinwp/hestia-pro/compare/v3.3.8...v3.3.9) (2026-10-29)
+
+- Fixed the portfolio section crashing when project type data was unavailable
+- Updated dependencies
+
 ##### [Version 3.3.8](https://github.com/Codeinwp/hestia-pro/compare/v3.3.7...v3.3.8) (2026-10-15)
 
 - Fixed Font Awesome icons missing from pricing feature lists.
